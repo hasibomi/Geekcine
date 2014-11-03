@@ -1,0 +1,16 @@
+[2014-01-28 18:47:15] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function autoUpdateData() on a non-object' in E:\wampserver\www\laravel\app\models\News.php:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-01-28 18:47:26] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function autoUpdateData() on a non-object' in E:\wampserver\www\laravel\app\models\News.php:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-01-28 18:47:27] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function autoUpdateData() on a non-object' in E:\wampserver\www\laravel\app\models\News.php:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-01-28 18:47:28] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function autoUpdateData() on a non-object' in E:\wampserver\www\laravel\app\models\News.php:31
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []

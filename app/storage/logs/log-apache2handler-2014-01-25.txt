@@ -1,0 +1,24 @@
+[2014-01-25 14:36:33] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'Lib\Services\Presentation\Request' not found' in E:\wampserver\www\laravel\app\lib\Services\Presentation\dbPresenter.php:220
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-01-25 14:38:14] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'Lib\Services\Presentation\Request' not found' in E:\wampserver\www\laravel\app\lib\Services\Presentation\dbPresenter.php:218
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-01-25 14:40:32] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Maximum execution time of 60 seconds exceeded' in E:\wampserver\www\laravel\app\lib\Services\Scraping\Curl.php:72
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-01-25 18:59:25] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Maximum execution time of 60 seconds exceeded' in E:\wampserver\www\laravel\app\lib\Helpers.php:19
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-01-25 19:17:16] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected T_SL' in E:\wampserver\www\laravel\app\storage\views\bef120cd80007e84b80966c3926da955:50
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-01-25 19:17:28] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected T_SL' in E:\wampserver\www\laravel\app\storage\views\bef120cd80007e84b80966c3926da955:50
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []

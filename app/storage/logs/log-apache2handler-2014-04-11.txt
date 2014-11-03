@@ -1,0 +1,256 @@
+[2014-04-11 11:09:59] production.ERROR: exception 'ErrorException' with message 'Trying to get property of non-object' in /var/www/clients/client0/web1/web/app/lib/Repository/Title/DbTitle.php:166
+Stack trace:
+#0 /var/www/clients/client0/web1/web/app/lib/Repository/Title/DbTitle.php(166): Illuminate\Exception\Handler->handleError(8, 'Trying to get p...', '/var/www/client...', 166, Array)
+#1 /var/www/clients/client0/web1/web/app/controllers/MoviesController.php(64): Lib\Repository\Title\DbTitle->getTitleWithLinks('0')
+#2 [internal function]: MoviesController->show('0')
+#3 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(387): call_user_func_array(Array, Array)
+#4 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(183): Illuminate\Routing\Controller->callAction('show', Array)
+#5 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(121): Illuminate\Routing\ControllerDispatcher->call(Object(MoviesController), Object(Illuminate\Routing\Route), 'show')
+#6 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1807): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), 'MoviesControlle...', 'show')
+#7 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}('0')
+#8 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/Route.php(209): call_user_func_array(Object(Closure), Array)
+#9 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1935): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#10 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1875): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#11 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1353): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#12 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1303): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#13 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Http/FrameGuard.php(75): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#14 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Session/Middleware.php(115): Illuminate\Http\FrameGuard->handle(Object(Illuminate\Http\Request), 1, true)
+#15 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Cookie/Queue.php(93): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#16 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Cookie/Guard.php(101): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#17 /var/www/clients/client0/web1/web/vendor/stack/builder/src/Stack/StackedHttpKernel.php(45): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#18 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1103): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#19 /var/www/clients/client0/web1/web/index.php(97): Illuminate\Foundation\Application->run()
+#20 {main} [] []
+[2014-04-11 11:39:43] production.ERROR: exception 'ErrorException' with message 'file_put_contents(/var/www/clients/client0/web1/web/app/storage/cache/17/f2/17f21c3dbe2b2da55aaae99132299107): failed to open stream: No such file or directory' in /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php:163
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleError(2, 'file_put_conten...', '/var/www/client...', 163, Array)
+#1 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(163): file_put_contents('/var/www/client...', '1397209483s:5:"...')
+#2 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Cache/FileStore.php(171): Illuminate\Filesystem\Filesystem->put('/var/www/client...', '1397209483s:5:"...')
+#3 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Cache/Repository.php(141): Illuminate\Cache\FileStore->put('captcha_698139d...', 'f6r6y', 5)
+#4 [internal function]: Illuminate\Cache\Repository->put('captcha_698139d...', 'f6r6y', 5)
+#5 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Support/Manager.php(261): call_user_func_array(Array, Array)
+#6 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(427): Illuminate\Support\Manager->__call('put', Array)
+#7 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(427): Illuminate\Cache\CacheManager->put('captcha_698139d...', 'f6r6y', 5)
+#8 /var/www/clients/client0/web1/web/app/controllers/CaptchaController.php(13): Illuminate\Support\Facades\Facade::__callStatic('put', Array)
+#9 /var/www/clients/client0/web1/web/app/controllers/CaptchaController.php(13): Illuminate\Support\Facades\Cache::put('captcha_698139d...', 'f6r6y', 5)
+#10 [internal function]: CaptchaController->getCaptcha()
+#11 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(387): call_user_func_array(Array, Array)
+#12 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(183): Illuminate\Routing\Controller->callAction('getCaptcha', Array)
+#13 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(121): Illuminate\Routing\ControllerDispatcher->call(Object(CaptchaController), Object(Illuminate\Routing\Route), 'getCaptcha')
+#14 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1807): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), 'CaptchaControll...', 'getCaptcha')
+#15 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#16 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/Route.php(209): call_user_func_array(Object(Closure), Array)
+#17 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1935): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#18 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1875): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#19 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1353): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#20 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1303): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#21 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Http/FrameGuard.php(75): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#22 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Session/Middleware.php(115): Illuminate\Http\FrameGuard->handle(Object(Illuminate\Http\Request), 1, true)
+#23 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Cookie/Queue.php(93): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#24 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Cookie/Guard.php(101): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#25 /var/www/clients/client0/web1/web/vendor/stack/builder/src/Stack/StackedHttpKernel.php(45): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#26 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1103): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#27 /var/www/clients/client0/web1/web/index.php(97): Illuminate\Foundation\Application->run()
+#28 {main} [] []
+[2014-04-11 11:53:01] production.ERROR: exception 'ErrorException' with message 'file_put_contents(/var/www/clients/client0/web1/web/app/storage/cache/17/9a/179a25a3a5d973dd80965458a98783c9): failed to open stream: No such file or directory' in /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php:163
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleError(2, 'file_put_conten...', '/var/www/client...', 163, Array)
+#1 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(163): file_put_contents('/var/www/client...', '1397210281s:5:"...')
+#2 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Cache/FileStore.php(171): Illuminate\Filesystem\Filesystem->put('/var/www/client...', '1397210281s:5:"...')
+#3 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Cache/Repository.php(141): Illuminate\Cache\FileStore->put('captcha_81e25d3...', '7jqgx', 5)
+#4 [internal function]: Illuminate\Cache\Repository->put('captcha_81e25d3...', '7jqgx', 5)
+#5 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Support/Manager.php(261): call_user_func_array(Array, Array)
+#6 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(427): Illuminate\Support\Manager->__call('put', Array)
+#7 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(427): Illuminate\Cache\CacheManager->put('captcha_81e25d3...', '7jqgx', 5)
+#8 /var/www/clients/client0/web1/web/app/controllers/CaptchaController.php(13): Illuminate\Support\Facades\Facade::__callStatic('put', Array)
+#9 /var/www/clients/client0/web1/web/app/controllers/CaptchaController.php(13): Illuminate\Support\Facades\Cache::put('captcha_81e25d3...', '7jqgx', 5)
+#10 [internal function]: CaptchaController->getCaptcha()
+#11 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(387): call_user_func_array(Array, Array)
+#12 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(183): Illuminate\Routing\Controller->callAction('getCaptcha', Array)
+#13 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(121): Illuminate\Routing\ControllerDispatcher->call(Object(CaptchaController), Object(Illuminate\Routing\Route), 'getCaptcha')
+#14 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1807): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), 'CaptchaControll...', 'getCaptcha')
+#15 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#16 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/Route.php(209): call_user_func_array(Object(Closure), Array)
+#17 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1935): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#18 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1875): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#19 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1353): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#20 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1303): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#21 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Http/FrameGuard.php(75): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#22 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Session/Middleware.php(115): Illuminate\Http\FrameGuard->handle(Object(Illuminate\Http\Request), 1, true)
+#23 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Cookie/Queue.php(93): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#24 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Cookie/Guard.php(101): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#25 /var/www/clients/client0/web1/web/vendor/stack/builder/src/Stack/StackedHttpKernel.php(45): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#26 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1103): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#27 /var/www/clients/client0/web1/web/index.php(97): Illuminate\Foundation\Application->run()
+#28 {main} [] []
+[2014-04-11 13:39:12] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Cannot redeclare Helpers::buildEmbed()' in /var/www/clients/client0/web1/web/app/lib/Helpers.php:537
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-04-11 13:40:52] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Cannot redeclare Helpers::buildEmbed()' in /var/www/clients/client0/web1/web/app/lib/Helpers.php:537
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-04-11 13:43:33] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected end of file' in /var/www/clients/client0/web1/web/app/lib/Helpers.php:540
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-04-11 13:44:50] production.ERROR: exception 'ErrorException' with message 'file_put_contents(/var/www/clients/client0/web1/web/app/storage/cache/17/b1/17b14c93c61527fbf6e8cfec216ef97d): failed to open stream: No such file or directory' in /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php:163
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleError(2, 'file_put_conten...', '/var/www/client...', 163, Array)
+#1 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(163): file_put_contents('/var/www/client...', '1397216990s:5:"...')
+#2 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Cache/FileStore.php(171): Illuminate\Filesystem\Filesystem->put('/var/www/client...', '1397216990s:5:"...')
+#3 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Cache/Repository.php(141): Illuminate\Cache\FileStore->put('captcha_38e707d...', '2t9h6', 5)
+#4 [internal function]: Illuminate\Cache\Repository->put('captcha_38e707d...', '2t9h6', 5)
+#5 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Support/Manager.php(261): call_user_func_array(Array, Array)
+#6 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(427): Illuminate\Support\Manager->__call('put', Array)
+#7 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(427): Illuminate\Cache\CacheManager->put('captcha_38e707d...', '2t9h6', 5)
+#8 /var/www/clients/client0/web1/web/app/controllers/CaptchaController.php(13): Illuminate\Support\Facades\Facade::__callStatic('put', Array)
+#9 /var/www/clients/client0/web1/web/app/controllers/CaptchaController.php(13): Illuminate\Support\Facades\Cache::put('captcha_38e707d...', '2t9h6', 5)
+#10 [internal function]: CaptchaController->getCaptcha()
+#11 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(387): call_user_func_array(Array, Array)
+#12 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(183): Illuminate\Routing\Controller->callAction('getCaptcha', Array)
+#13 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(121): Illuminate\Routing\ControllerDispatcher->call(Object(CaptchaController), Object(Illuminate\Routing\Route), 'getCaptcha')
+#14 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1807): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), 'CaptchaControll...', 'getCaptcha')
+#15 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#16 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/Route.php(209): call_user_func_array(Object(Closure), Array)
+#17 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1935): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#18 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1875): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#19 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1353): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#20 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1303): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#21 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Http/FrameGuard.php(75): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#22 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Session/Middleware.php(115): Illuminate\Http\FrameGuard->handle(Object(Illuminate\Http\Request), 1, true)
+#23 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Cookie/Queue.php(93): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#24 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Cookie/Guard.php(101): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#25 /var/www/clients/client0/web1/web/vendor/stack/builder/src/Stack/StackedHttpKernel.php(45): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#26 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1103): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#27 /var/www/clients/client0/web1/web/index.php(97): Illuminate\Foundation\Application->run()
+#28 {main} [] []
+[2014-04-11 13:46:43] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected end of file' in /var/www/clients/client0/web1/web/app/lib/Helpers.php:294
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-04-11 14:09:43] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '0' (T_LNUMBER)' in /var/www/clients/client0/web1/web/app/lib/Helpers.php:537
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-04-11 14:12:34] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected end of file, expecting function (T_FUNCTION)' in /var/www/clients/client0/web1/web/app/lib/Helpers.php:546
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-04-11 14:13:31] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected end of file, expecting function (T_FUNCTION)' in /var/www/clients/client0/web1/web/app/lib/Helpers.php:546
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-04-11 14:13:33] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected end of file, expecting function (T_FUNCTION)' in /var/www/clients/client0/web1/web/app/lib/Helpers.php:546
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-04-11 14:15:32] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected end of file, expecting function (T_FUNCTION)' in /var/www/clients/client0/web1/web/app/lib/Helpers.php:546
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-04-11 14:16:44] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected end of file, expecting function (T_FUNCTION)' in /var/www/clients/client0/web1/web/app/lib/Helpers.php:546
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-04-11 14:17:16] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected end of file, expecting function (T_FUNCTION)' in /var/www/clients/client0/web1/web/app/lib/Helpers.php:546
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-04-11 14:19:15] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected end of file, expecting function (T_FUNCTION)' in /var/www/clients/client0/web1/web/app/lib/Helpers.php:546
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-04-11 14:31:05] production.ERROR: exception 'ErrorException' with message 'Trying to get property of non-object' in /var/www/clients/client0/web1/web/app/lib/Repository/Title/DbTitle.php:166
+Stack trace:
+#0 /var/www/clients/client0/web1/web/app/lib/Repository/Title/DbTitle.php(166): Illuminate\Exception\Handler->handleError(8, 'Trying to get p...', '/var/www/client...', 166, Array)
+#1 /var/www/clients/client0/web1/web/app/controllers/MoviesController.php(64): Lib\Repository\Title\DbTitle->getTitleWithLinks('0')
+#2 [internal function]: MoviesController->show('0')
+#3 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(387): call_user_func_array(Array, Array)
+#4 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(183): Illuminate\Routing\Controller->callAction('show', Array)
+#5 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(121): Illuminate\Routing\ControllerDispatcher->call(Object(MoviesController), Object(Illuminate\Routing\Route), 'show')
+#6 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1807): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), 'MoviesControlle...', 'show')
+#7 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}('0')
+#8 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/Route.php(209): call_user_func_array(Object(Closure), Array)
+#9 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1935): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#10 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1875): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#11 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1353): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#12 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1303): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#13 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Http/FrameGuard.php(75): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#14 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Session/Middleware.php(115): Illuminate\Http\FrameGuard->handle(Object(Illuminate\Http\Request), 1, true)
+#15 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Cookie/Queue.php(93): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#16 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Cookie/Guard.php(101): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#17 /var/www/clients/client0/web1/web/vendor/stack/builder/src/Stack/StackedHttpKernel.php(45): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#18 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1103): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#19 /var/www/clients/client0/web1/web/index.php(97): Illuminate\Foundation\Application->run()
+#20 {main} [] []
+[2014-04-11 22:37:35] production.ERROR: exception 'ErrorException' with message 'Trying to get property of non-object' in /var/www/clients/client0/web1/web/app/lib/Repository/Title/DbTitle.php:166
+Stack trace:
+#0 /var/www/clients/client0/web1/web/app/lib/Repository/Title/DbTitle.php(166): Illuminate\Exception\Handler->handleError(8, 'Trying to get p...', '/var/www/client...', 166, Array)
+#1 /var/www/clients/client0/web1/web/app/controllers/MoviesController.php(64): Lib\Repository\Title\DbTitle->getTitleWithLinks('0')
+#2 [internal function]: MoviesController->show('0')
+#3 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(387): call_user_func_array(Array, Array)
+#4 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(183): Illuminate\Routing\Controller->callAction('show', Array)
+#5 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(121): Illuminate\Routing\ControllerDispatcher->call(Object(MoviesController), Object(Illuminate\Routing\Route), 'show')
+#6 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1807): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), 'MoviesControlle...', 'show')
+#7 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}('0')
+#8 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/Route.php(209): call_user_func_array(Object(Closure), Array)
+#9 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1935): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#10 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1875): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#11 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1353): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#12 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1303): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#13 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Http/FrameGuard.php(75): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#14 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Session/Middleware.php(115): Illuminate\Http\FrameGuard->handle(Object(Illuminate\Http\Request), 1, true)
+#15 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Cookie/Queue.php(93): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#16 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Cookie/Guard.php(101): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#17 /var/www/clients/client0/web1/web/vendor/stack/builder/src/Stack/StackedHttpKernel.php(45): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#18 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1103): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#19 /var/www/clients/client0/web1/web/index.php(97): Illuminate\Foundation\Application->run()
+#20 {main} [] []
+[2014-04-11 22:38:35] production.ERROR: exception 'ErrorException' with message 'Trying to get property of non-object' in /var/www/clients/client0/web1/web/app/lib/Repository/Title/DbTitle.php:166
+Stack trace:
+#0 /var/www/clients/client0/web1/web/app/lib/Repository/Title/DbTitle.php(166): Illuminate\Exception\Handler->handleError(8, 'Trying to get p...', '/var/www/client...', 166, Array)
+#1 /var/www/clients/client0/web1/web/app/controllers/MoviesController.php(64): Lib\Repository\Title\DbTitle->getTitleWithLinks('0')
+#2 [internal function]: MoviesController->show('0')
+#3 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(387): call_user_func_array(Array, Array)
+#4 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(183): Illuminate\Routing\Controller->callAction('show', Array)
+#5 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(121): Illuminate\Routing\ControllerDispatcher->call(Object(MoviesController), Object(Illuminate\Routing\Route), 'show')
+#6 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1807): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), 'MoviesControlle...', 'show')
+#7 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}('0')
+#8 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/Route.php(209): call_user_func_array(Object(Closure), Array)
+#9 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1935): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#10 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1875): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#11 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1353): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#12 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1303): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#13 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Http/FrameGuard.php(75): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#14 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Session/Middleware.php(115): Illuminate\Http\FrameGuard->handle(Object(Illuminate\Http\Request), 1, true)
+#15 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Cookie/Queue.php(93): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#16 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Cookie/Guard.php(101): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#17 /var/www/clients/client0/web1/web/vendor/stack/builder/src/Stack/StackedHttpKernel.php(45): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#18 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1103): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#19 /var/www/clients/client0/web1/web/index.php(97): Illuminate\Foundation\Application->run()
+#20 {main} [] []
+[2014-04-11 22:40:15] production.ERROR: exception 'ErrorException' with message 'Trying to get property of non-object' in /var/www/clients/client0/web1/web/app/lib/Repository/Title/DbTitle.php:166
+Stack trace:
+#0 /var/www/clients/client0/web1/web/app/lib/Repository/Title/DbTitle.php(166): Illuminate\Exception\Handler->handleError(8, 'Trying to get p...', '/var/www/client...', 166, Array)
+#1 /var/www/clients/client0/web1/web/app/controllers/MoviesController.php(64): Lib\Repository\Title\DbTitle->getTitleWithLinks('0')
+#2 [internal function]: MoviesController->show('0')
+#3 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(387): call_user_func_array(Array, Array)
+#4 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(183): Illuminate\Routing\Controller->callAction('show', Array)
+#5 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(121): Illuminate\Routing\ControllerDispatcher->call(Object(MoviesController), Object(Illuminate\Routing\Route), 'show')
+#6 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1807): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), 'MoviesControlle...', 'show')
+#7 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}('0')
+#8 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/Route.php(209): call_user_func_array(Object(Closure), Array)
+#9 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1935): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#10 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1875): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#11 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1353): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#12 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1303): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#13 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Http/FrameGuard.php(75): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#14 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Session/Middleware.php(115): Illuminate\Http\FrameGuard->handle(Object(Illuminate\Http\Request), 1, true)
+#15 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Cookie/Queue.php(93): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#16 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Cookie/Guard.php(101): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#17 /var/www/clients/client0/web1/web/vendor/stack/builder/src/Stack/StackedHttpKernel.php(45): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#18 /var/www/clients/client0/web1/web/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1103): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#19 /var/www/clients/client0/web1/web/index.php(97): Illuminate\Foundation\Application->run()
+#20 {main} [] []

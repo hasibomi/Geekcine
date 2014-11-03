@@ -1,0 +1,8 @@
+[2014-04-19 06:31:57] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected end of file, expecting function (T_FUNCTION)' in /var/www/clients/client0/web1/web/app/lib/Helpers.php:553
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-04-19 06:33:39] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected end of file, expecting function (T_FUNCTION)' in /var/www/clients/client0/web1/web/app/lib/Helpers.php:553
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []

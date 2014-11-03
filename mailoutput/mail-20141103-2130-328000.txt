@@ -1,0 +1,28 @@
+To: hasibomi@hasibomi.com
+Subject: Activation du compte
+Message-ID: <f0c1b3d54e81603cce62a5c9ebe8a02c@localhost>
+Date: Mon, 03 Nov 2014 22:30:18 +0100
+From: =?utf-8?Q?Geekcin=C3=A9?= <mappylord@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>
+<html lang=3D"en-US">
+    <head>
+        <meta charset=3D"utf-8">
+    </head>
+    <body>
+        <h3>Merci pour votre inscription, hasibomi!</h3>
+=20
+        <p>
+       =09  Pour compl=C3=A9ter l'inscription s'il vous pla=C3=AEt cliquez =
+sur le lien ci-dessous.
+       =09  <br>
+       =09  <a href=3D"http://localhost:8000/activate/14/1OfQKFDsMR5K3XIzQq=
+b3DnIeBh0pORJzLCnpBOB528">http://localhost:8000/activate/14/1OfQKFDsMR5K3XI=
+zQqb3DnIeBh0pORJzLCnpBOB528</a>
+        </p>
+    </body>
+</html>
+
