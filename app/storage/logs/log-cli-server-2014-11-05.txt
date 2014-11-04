@@ -1,0 +1,8 @@
+[2014-11-05 00:18:33] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'endforeach' (T_ENDFOREACH)' in C:\Users\Omi\Dropbox\Web Projects\Elance\MappyLord\Geekcin\app\storage\views\5c7095647a52a8060f4bc670f93cf579:100
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-11-05 00:18:37] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'endforeach' (T_ENDFOREACH)' in C:\Users\Omi\Dropbox\Web Projects\Elance\MappyLord\Geekcin\app\storage\views\5c7095647a52a8060f4bc670f93cf579:100
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []

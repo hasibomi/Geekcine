@@ -52,8 +52,8 @@ return array(
 	|
 	*/
 
-	'locale' => 'fr',
-
+	'locale' => 'en',
+    // fr
 	/*
 	|--------------------------------------------------------------------------
 	| Encryption Key
@@ -132,6 +132,7 @@ return array(
 		'Lib\Services\Cache\CacheInvalidationServiceProvider',
 		'Lib\Repository\ActorData\ActorDataServiceProvider',
 		'Frozennode\Administrator\AdministratorServiceProvider',
+        'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
 
 
 	),

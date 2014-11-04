@@ -22,7 +22,6 @@
 @section('content')
 
 
-<section id="content">
 	<section class="hbox stretch">
 	    <section>
 	    	<!-- JUMBOTRON -->
@@ -458,5 +457,5 @@
 @stop
 
 @section('scripts')
-
+    {{ HTML::script('assets/js/scripts.js') }}
 @stop
