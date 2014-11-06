@@ -23,7 +23,7 @@
   {{ HTML::style('assets/css/font.css') }}
   {{ HTML::style('assets/css/app.css') }}
 
-  {{ HTML::style('assets/css/styles.css') }}
+  <!-- {{ HTML::style('assets/css/styles.css') }} -->
   {{ HTML::style('assets/css/' . $options->getColorScheme() . '.css') }}
   {{ HTML::style('assets/css/new.css') }}
 

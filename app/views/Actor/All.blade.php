@@ -1,68 +1,61 @@
 @extends('Main.Boilerplate')
 
 @section('bodytag')
-	<body class="padding nav">
+	<body>
 @stop
 
+@section('nav')
+	@include('Partials.Navbar')
+@stop
 
 @section('content')
 
-  <div class="container push-footer-wrapper">
-
-  <div class="row pagination-top">{{ $actors->links() }}
-
-  	@if(Helpers::hasAccess('people.create'))	
-  		<a href="{{ route(Str::slug(trans('main.people')) . '.create') }}" class="pull-right btn btn-success">{{ trans('main.create new') }}</a>
-  	@endif
-  	
-  </div>
-
+<section class="hbox stretch">
 	
-	<div class="row"> @include('Partials.Response') </div>
+    <section>
+    	
+        <section class="vbox">
+        	<section class="scrollable padder-lg">
+            	<div class="row pagination-top">{{ $actors->links() }}
+                 	@if(Helpers::hasAccess('people.create'))	
+                    	<a href="{{ route(Str::slug(trans('main.people')) . '.create') }}" class="pull-right btn btn-success" style="margin-top: 1%">{{ trans('main.create new') }}</a>
+                	@endif
+                </div>
+                    
+                    <h3 class="font-thin">{{ trans('main.popular actors') }}</h3>
+                    <!-- Actors -->
+                    @if (isset($actors) && ! $actors->isEmpty())
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="row row-sm">
+                                @foreach($actors as $k => $v)
+                                    <div class="col-xs-6 col-sm-3">
+                                        <div class="item">
+                                          <div class="pos-rlt">
+                                            <a href="{{ Helpers::url($v['name'], $v['id'], 'people') }}">
+                                                <img src="{{{ asset($v['image']) }}}" class="r r-2x img-full" alt="{{ 'Poster of ' . $v['name'] }}">
+                                            </a>
+                                          </div>
+                                          <div class="padder-v">
+                                            <a class="text-ellipsis" href="{{ Helpers::url($v['name'], $v['id'], 'people') }}">{{{ $v['name'] }}}</a>
+                                          </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                          </div>
+                          <!-- Actors end -->
+                        </div>
+                    @endif
+            </section>
+            <!-- /section#bjax-target.scrollable.padder-lg -->
+        </section>
+        <!-- /section.vbox -->
+        
+    </section>
+    <!-- /section -->
     
-    <div id="grid" class="browse-grid">	
-
-		@foreach($actors as $k => $r)
-
-		    <figure class="col-sm-3 col-lg-2 col-xs-6" data-age="{{{ $r['birth_date'] }}}" data-name="{{{ $r['name'] }}}">
-		    	<div class="img-container">
-		    		<a href="{{ Helpers::url($r['name'], $r['id'], 'people') }}">
-		    			<img class ="img-responsive" src="{{ str_replace('w185', 'w342', asset($r['image'])) }}" alt="{{{ $r['name'] }}}">
-					</a>
-
-			  	  <figcaption name="{{{ $r['name'] }}}" >
-			  	  	<a href="{{ Helpers::url($r['name'], $r['id'], 'people') }}"> {{  Helpers::shrtString($r['name']) }} </a>
-
-			  	  	<section class="row action-buttons">
-
-			  	  		@if (Helpers::hasAccess('people.delete'))
-						
-							{{ Form::open(array('route' => array(Str::slug(trans('main.people')) . '.destroy', $r['id']), 'method' => 'delete')) }}
-
-							  <button type="submit" title="{{ trans('main.delete') }}" class="btn btn-danger-drk btn-xs"><i class="fa fa-trash-o"></i> </button>
-
-							{{ Form::close() }}
-
-			  	  		@endif
-
-						@if (Helpers::hasAccess('people.edit'))
-
-							<a href="{{ route(Str::slug(trans('main.people')) . '.edit', $r['id']) }}" title="{{ trans('main.edit') }}" class="btn btn-warning btn-xs actor-edit-sm"><i class="fa fa-edit"></i> </a>
-
-						@endif
-		    			
-			  	  	</section>
-
-			  	  </figcaption>
-
-		    	</div>	      
-		    </figure>
-
-
-	  @endforeach
-     
-	</div> 
-<div class="push"></div>				
-</div>
+</section>
+<!-- /section.hbox-stretch -->
 
 @stop

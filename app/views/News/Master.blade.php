@@ -27,8 +27,24 @@
 
     <section class="vbox">
         <section class="scrollable">
-            <div class="row"> @include('Partials.Response') </div>
+            <div class="row"> <br> <div class="col-md-10 col-md-offset-1"> @include('Partials.Response') </div> </div>
             <div id="masonry" class="pos-rlt animated fadeInUpBig">
+            
+            	{{ $news->links() }}
+				
+				@if (Helpers::hasAccess('news.create'))
+					<a href="{{ route(Str::slug(trans('main.news')) . '.create') }}" id="create-news" class="pull-right btn btn-success"><i class="fa fa-pencil"></i> {{ trans('dash.create') }}</a>
+				@endif
+
+				@if (Helpers::hasAccess('news.update'))
+
+					{{ Form::open(array('url' => 'news/external', 'class' => 'pull-right form-update-news')) }}
+
+                    	<button type="submit" class="btn btn-success"><i class="fa fa-refresh"></i> {{ trans('dash.update') }}</button>
+
+                  	{{ Form::close() }}
+
+				@endif
                 @if ( $news->isEmpty() )
                     {{ trans('main.no news found') }}
                 @else

@@ -24,7 +24,7 @@
 
 	<section class="hbox stretch">
 	    <section>
-	    	<!-- JUMBOTRON -->
+	    	
 	        <section class="vbox">
 	          <section class="scrollable padder-lg w-f-md" id="bjax-target">
 
@@ -38,8 +38,8 @@
               	{{ Form::close() }}
 
 				@endif
-
-				@include('Partials.Jumbotron')
+                
+				<!-- JUMBOTRON -->
 
 	            <h2 class="font-thin m-b">Discover <span class="musicbar animate inline m-l-sm" style="width:20px;height:20px">
 	             <span class="bar1 a1 bg-primary lter"></span>
@@ -457,5 +457,5 @@
 @stop
 
 @section('scripts')
-    {{ HTML::script('assets/js/scripts.js') }}
+    <!-- {{ HTML::script('assets/js/scripts.js') }} -->
 @stop
