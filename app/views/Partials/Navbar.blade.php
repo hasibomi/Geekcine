@@ -7,6 +7,13 @@
         <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">
           Discover
         </li>
+        @if(Helpers::hasAccess('super'))
+            @if (isset($options->options['logo']) && Str::length($options->options['logo']) > 4)
+                <li><a href="{{ url('dashboard') }}">{{ trans('dash.dash') }}</a></li>
+            @else
+                <li><a href="{{ url('dashboard') }}">{{ trans('main.dashboard') }}</a></li>
+            @endif
+        @endif
         <li>
           <a href="/">
             <i class="icon-film icon text-primary"></i>

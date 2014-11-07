@@ -1,5 +1,5 @@
 @if ( $user = Helpers::loggedInUser())
-
+<div class="bottom padder m-b-sm">
 	@if( ! isset($watchlist[$r->id]))
 
 		{{ Form::open(array('action' => 'ListsController@postAdd', 'class' => 'lists-form')) }}
@@ -7,8 +7,10 @@
 			{{ Form::hidden('user', $user->id) }}
 			{{ Form::hidden('title', $r->id) }}
 			{{ Form::hidden('list', 'watchlist') }}
-		  
-		  <button data-user="{{{ $user->id }}}" data-title="{{{ $r->id }}}" type="submit" title="{{ trans('main.add to watchlist') }}" class="btn btn-danger-drk btn-xs lists"><i class="fa fa-plus"></i> </button>
+            
+            
+            	<button data-user="{{{ $user->id }}}" data-title="{{{ $r->id }}}" type="submit" title="{{ trans('main.add to watchlist') }}" class="btn btn-danger-drk btn-xs lists pull-right"><i class="fa fa-plus-circle"></i></button>
+            
 
 		{{ Form::close() }}
 
@@ -20,7 +22,8 @@
 		  {{ Form::hidden('title', $r->id) }}
 		  {{ Form::hidden('list', 'watchlist') }}
 
-		  <button type="submit" title="{{ trans('main.remove from watchlist') }}" data-user="{{{ $user->id }}}" data-title="{{{ $r->id }}}" class="btn btn-danger-drk btn-xs lists watchlisted"><i class="fa fa-plus"></i></button>
+		  	<button type="submit" title="{{ trans('main.remove from watchlist') }}" data-user="{{{ $user->id }}}" data-title="{{{ $r->id }}}" class="btn btn-danger-drk btn-xs lists watchlisted pull-right"><i class="fa fa-plus-circle"></i></button>
+          
 
 		{{ Form::close() }}
 
@@ -34,7 +37,7 @@
 			{{ Form::hidden('title', $r->id) }}
 			{{ Form::hidden('list', 'favorite') }}
 		  
-		  <button  type="submit" data-user="{{{ $user->id }}}" data-title="{{{ $r->id }}}" title="{{ trans('main.add to favorites') }}" class="btn btn-danger-drk btn-xs lists"><i class="fa fa-heart"></i> </button>
+		  		<button  type="submit" data-user="{{{ $user->id }}}" data-title="{{{ $r->id }}}" title="{{ trans('main.add to favorites') }}" class="btn btn-danger-drk btn-xs lists"><i class="fa fa-heart-o"></i> </button>
 
 		{{Form::close()}}
 
@@ -46,7 +49,7 @@
 		  {{ Form::hidden('title', $r->id) }}
 		  {{ Form::hidden('list', 'favorite') }}
 
-		  <button type="submit" title="{{ trans('main.remove from favorites') }}" data-user="{{{ $user->id }}}" data-title="{{{ $r->id }}}" class="btn btn-danger-drk btn-xs lists watchlisted"><i class="fa fa-heart"></i></button>
+		  	<button type="submit" title="{{ trans('main.remove from favorites') }}" data-user="{{{ $user->id }}}" data-title="{{{ $r->id }}}" class="btn btn-danger-drk btn-xs lists watchlisted"><i class="fa fa-heart-o"></i></button>
 
 		{{ Form::close() }}
 
@@ -59,3 +62,4 @@
 	<a href="{{ url('login') }}" title="{{ trans('main.add to favorites') }}" class="btn btn-danger-drk btn-xs lists"><i class="fa fa-heart"></i> </a>
 
 @endif
+</div> <!-- /.bottom.padder.m-b-sm -->
