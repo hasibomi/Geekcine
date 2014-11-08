@@ -9,20 +9,28 @@
 @stop
 
 @section('content')
- 
-  <div class="container push-footer-wrapper">
+<section class="hbox stretch">
+	    <section>
+	    	
+	        <section class="vbox">
+	          <section class="scrollable padder-lg" id="bjax-target">
 
     <div class="col-sm-12">
-      <h3 class="heading">{{ trans('users.edit user heading') }} <i class="fa fa-pencil"></i></h3 class="heading">
+      <h3 class="heading">{{ trans('users.edit user heading') }} <i class="fa fa-pencil"></i></h3>
 
       <p class="padding-top-bot"> {{ trans('users.edit user expl') }} <a href="{{ Helpers::url($user->username, $user->id, 'users') . '/change-password' }}">{{ trans('main.here') }}</a></p>
     </div>
+    
+    <br>
 
     <div class="row"> @include('Partials.Response') </div>
 
     <section class="col-sm-12 users-upload-box">
       
       <img width="100px" height="100px" src="{{{ $user->avatar ? asset($user->avatar) : asset('assets/images/no_user_icon_big.jpg') }}}" alt="{{{ $user->username . trans('users.avatar') }}}" class="img-responsive thumb">
+      
+      <br>
+      <br>
 
       {{ Form::open(array('route' => array('users.avatar', $user->id), 'files' => true)) }}
 
@@ -35,8 +43,13 @@
         <button type="submit" class="btn btn-success">{{ trans('users.upload') }}</button>
 
       {{ Form::close() }}
+      
+      <br>
 
       <img width="50%" src="{{{ $user->background ? asset($user->background) : asset('assets/images/ronin.jpg') }}}" alt="{{{ $user->username . trans('users.avatar') }}}" class="img-responsive thumb">
+      
+      <br>
+      <br>
 
        {{ Form::open(array('route' => array('users.bg', $user->id), 'files' => true)) }}
 
@@ -82,12 +95,13 @@
           <button type="submit" class="btn btn-success">{{ trans('dash.update') }}</button>
          
       {{ Form::close() }}
+      
+      <br><br>
     </div>
 
   <div class="push"></div>
-  </div>
 
-
+</section></section></section></section>
   @stop
 
 @section('ads')

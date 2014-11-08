@@ -47,8 +47,6 @@
 
                       @include('Partials.Navbar')
 
-                      @include('Partials.Footer')
-
                   </section>
               </aside>
               <!-- /.aside -->

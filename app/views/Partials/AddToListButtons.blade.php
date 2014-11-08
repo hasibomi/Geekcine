@@ -1,5 +1,6 @@
-@if ( $user = Helpers::loggedInUser())
 <div class="bottom padder m-b-sm">
+
+@if ( $user = Helpers::loggedInUser())
 	@if( ! isset($watchlist[$r->id]))
 
 		{{ Form::open(array('action' => 'ListsController@postAdd', 'class' => 'lists-form')) }}

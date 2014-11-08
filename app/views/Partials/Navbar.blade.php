@@ -15,7 +15,7 @@
             @endif
         @endif
         <li>
-          <a href="/">
+          <a href="/movies">
             <i class="icon-film icon text-primary"></i>
             <span class="font-bold">Movie</span>
           </a>
@@ -55,22 +55,24 @@
             <span>Pages</span>
           </a>
           <ul class="nav dk text-sm">
+          	@if ( Sentry::check() )
             <li >
-              <a href="profile.html" class="auto">                                                        
+              <a href="{{ Helpers::profileUrl() }}" class="auto">                                                        
                 <i class="fa fa-angle-right text-xs"></i>
 
                 <span>Profile</span>
               </a>
             </li>
+            @endif
             <li >
-              <a href="blog.html" class="auto">                                                        
+              <a href="blog" class="auto">                                                        
                 <i class="fa fa-angle-right text-xs"></i>
 
                 <span>Timeline</span>
               </a>
             </li>
             <li >
-              <a href="invoice.html" class="auto">                                                        
+              <a href="invoice" class="auto">                                                        
                 <i class="fa fa-angle-right text-xs"></i>
 
                 <span>Privacy Policy</span>

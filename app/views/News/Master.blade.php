@@ -24,7 +24,7 @@
 @stop
 
 @section('content')
-
+<section class="hbox stretch">
     <section class="vbox">
         <section class="scrollable">
             <div class="row"> <br> <div class="col-md-10 col-md-offset-1"> @include('Partials.Response') </div> </div>
@@ -77,8 +77,7 @@
         <!-- /.scrollable -->
     </section>
     <!-- /.vbox -->
-
-    <div class="row"></div>
+</section>
 
 @stop
 

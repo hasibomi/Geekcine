@@ -24,24 +24,9 @@
                         <div id="img-contents">
                             <img width="100px" height="100px" class="img-thumbnail" src="{{ $user->avatar ? asset($user->avatar) : asset('assets/images/no_user_icon_big.jpg')}}" alt="" style="margin-top: 7%;">
                             <h1>{{ $user->first_name && $user->last_name ? $user->first_name . ' ' . $user->last_name : $user->username }}</h1>
-                            @if($friendship == NULL)
-                                @if(!Helpers::isUser($user->username))
-                                <a href='{{url("/users/friends/send/$user->id")}}' class="btn btn-primary">Send friend request</a>
-                                @endif
-                            @else
-                                @if($friendship->status == 0)
-                                    @if($friendship->first_user != $user->id)
-                                    <button type="button" class="btn btn-primary">Friend Request Sent</button>
-                                    @else
-                                    <a href='{{url("/users/friends/accept/$user->id")}}' class="btn btn-primary">Accept</a>
-                                    <a href='{{url("/users/friends/deny/$user->id")}}' class="btn btn-primary">Deny</a>
-                                    @endif
-                                @elseif($friendship->status > 1)
-                                    <a href='{{url("/users/friends/send/$user->id")}}' class="btn btn-primary">Send friend request</a>
-                                @endif
-                            @endif
+                            
                         </div>
-                    </section>             
+                    </section>        
                 </div>
                 <div class="panel wrapper">
                   <div class="row text-center">
@@ -60,17 +45,35 @@
                   </div>
                 </div>
                 <div class="btn-group btn-group-justified m-b">
-                  <a class="btn btn-success btn-rounded" data-toggle="button">
-                    <span class="text">
-                      <i class="fa fa-user"></i> Add friend
-                    </span>
-                    <span class="text-active">
-                      <i class="fa fa-user"></i> Request sent
-                    </span>
-                  </a>
-                  <a class="btn btn-dark btn-rounded">
-                    <i class="fa fa-comment-o"></i> Message
-                  </a>
+                    @if($friendship == NULL)
+                    	@if(!Helpers::isUser($user->username))
+                            <a href='{{url("/users/friends/send/$user->id")}}' class="btn btn-success btn-rounded">
+                                <span class="text-active">
+                                  <i class="fa fa-user"></i> Add friend
+                                </span>
+                            </a>
+                        @endif
+                    @else
+                    	@if($friendship->status == 0)
+                        	@if($friendship->first_user != $user->id)
+                            	<a class="btn btn-success btn-rounded">
+                                    <span class="text-active">
+                                      <i class="fa fa-user"></i> Request sent
+                                    </span>
+                                </a>
+                            @else
+                            	<a href='{{url("/users/friends/accept/$user->id")}}' class="btn btn-primary">Accept</a>
+                            	<a href='{{url("/users/friends/deny/$user->id")}}' class="btn btn-primary">Deny</a>
+                            @endif
+                            
+                        @elseif($friendship->status > 1)
+                        	<a href='{{url("/users/friends/send/$user->id")}}' class="btn btn-success btn-rounded">
+                                <span class="text-active">
+                                  <i class="fa fa-user"></i> Add friend
+                                </span>
+                            </a>
+                        @endif
+                    @endif
                 </div>
                 <div>
                   <small class="text-uc text-xs text-muted">about me</small>
@@ -91,84 +94,49 @@
         </aside>
         <aside class="bg-white">
           <section class="vbox">
-            <header class="header bg-light lt">
-              <ul class="nav nav-tabs nav-white">
-                <li class="active"><a href="#activity" data-toggle="tab">Watchlist</a></li>
-                <li class=""><a href="#events" data-toggle="tab">Favorite</a></li>
-                <li class=""><a href="#interaction" data-toggle="tab">Review</a></li>
-                <li class=""><a href="#frndlist" data-toggle="tab">Firend list</a></li>
-              </ul>
-            </header>
+            
+              @include ('Users.Partials.Header')
+            
             <section class="scrollable">
               <div class="tab-content">
                 <div class="tab-pane active" id="activity">
+                
+                	<br>
+
                       @foreach (Request::segment(3) == 'favorites' ? $favorite : $watchlist as $w)
-                    
-                        <figure class="col-sm-3 col-lg-2 col-xs-6" data-filter-class='{{ Helpers::genreFilter($w['genre']) }}' data-popularity="{{{ $w['imdb_votes_num'] }}}" data-name="{{{ $w['title'] }}}" data-release="{{{ $w['year'] }}}">
-                            <div class="img-container">
-                                <a href="{{Helpers::url($w['title'], $w['id'], $w['type'])}}">
-                                    <img class ="img-responsive" src="{{{ $w['poster'] ? asset($w['poster']) : asset('assets/images/imdbnoimage.jpg') }}}" alt="{{{ $w['title'] }}}">
-                                </a>
-    
-                              <figcaption title="{{{ $w['title'] }}}" >
-                                <a href="{{Helpers::url($w['title'], $w['id'], $w['type'])}}"> {{  Helpers::shrtString($w['title']) }} </a>
-    
-                                @if(Helpers::isUser($user->username))
+		
+        					<div class="col-xs-6 col-sm-4 col-md-3 col-lg-2" data-filter-class='{{ Helpers::genreFilter($w['genre']) }}' data-popularity="{{{ $w['imdb_votes_num'] }}}" data-name="{{{ $w['title'] }}}" data-release="{{{ $w['year'] }}}">
+                                <div class="item">
+                                    <div class="pos-rlt">
+                                        <a href="{{Helpers::url($w['title'], $w['id'], $w['type'])}}">
+                                            <img class ="img-responsive" src="{{{ $w['poster'] ? asset($w['poster']) : asset('assets/images/imdbnoimage.jpg') }}}" alt="{{{ $w['title'] }}}">
+                                        </a> <!-- Image -->
+                                    </div> <!-- /.pos-rlt -->
+                                    <div class="padder-v">
+                                        <a href="{{Helpers::url($w['title'], $w['id'], $w['type'])}}"> {{  Helpers::shrtString($w['title']) }} </a>
+                                        @if(Helpers::isUser($user->username))
                                 
-                                    {{ Form::open(array('url' => 'lists/remove', 'class' => 'trash-ico pull-right')) }}
-    
-                                      {{ Form::hidden('title', $w['id']) }}
-                                      {{ Form::hidden('user', $user->id) }}
-                                      {{ Form::hidden('list', Request::segment(3) == 'favorites' ? 'favorite' : 'watchlist') }}
-                                      {{ Form::hidden('name', $w['title']) }}
-    
-                                      <button type = "submit" title="{{ trans('dash.remove') }}" class="btn btn-danger btn-xs"><i class="fa fa-times"></i> </button> 
-                                    {{ Form::close() }}
-    
-                                @endif
-                              </figcaption>
-    
-                            </div>	      
-                        </figure>
-					@endforeach
-                </div>
-                <div class="tab-pane" id="events">
-                  <div class="text-center wrapper">
-                    @foreach (Request::segment(3) == 'favorites' ? $favorite : $watchlist as $w)
-				
-                        <figure class="col-sm-3 col-lg-2 col-xs-6" data-filter-class='{{ Helpers::genreFilter($w['genre']) }}' data-popularity="{{{ $w['imdb_votes_num'] }}}" data-name="{{{ $w['title'] }}}" data-release="{{{ $w['year'] }}}">
-                            <div class="img-container">
-                                <a href="{{Helpers::url($w['title'], $w['id'], $w['type'])}}">
-                                    <img class ="img-responsive" src="{{{ $w['poster'] ? asset($w['poster']) : asset('assets/images/imdbnoimage.jpg') }}}" alt="{{{ $w['title'] }}}">
-                                </a>
-    
-                              <figcaption title="{{{ $w['title'] }}}" >
-                                <a href="{{Helpers::url($w['title'], $w['id'], $w['type'])}}"> {{  Helpers::shrtString($w['title']) }} </a>
-    
-                                @if(Helpers::isUser($user->username))
-                                
-                                    {{ Form::open(array('url' => 'lists/remove', 'class' => 'trash-ico pull-right')) }}
-    
-                                      {{ Form::hidden('title', $w['id']) }}
-                                      {{ Form::hidden('user', $user->id) }}
-                                      {{ Form::hidden('list', Request::segment(3) == 'favorites' ? 'favorite' : 'watchlist') }}
-                                      {{ Form::hidden('name', $w['title']) }}
-    
-                                      <button type = "submit" title="{{ trans('dash.remove') }}" class="btn btn-danger btn-xs"><i class="fa fa-times"></i> </button> 
-                                    {{ Form::close() }}
-    
-                                @endif
-                              </figcaption>
-    
-                            </div>	      
-                        </figure>
-                    @endforeach
-                  </div>
-                </div>
-                <div class="tab-pane" id="interaction">
-                  <div class="text-center wrapper">
-                    <i class="fa fa-spinner fa fa-spin fa fa-large"></i>
-                  </div>
+                                            {{ Form::open(array('url' => 'lists/remove', 'class' => 'trash-ico pull-right')) }}
+            
+                                              {{ Form::hidden('title', $w['id']) }}
+                                              {{ Form::hidden('user', $user->id) }}
+                                              {{ Form::hidden('list', Request::segment(3) == 'favorites' ? 'favorite' : 'watchlist') }}
+                                              {{ Form::hidden('name', $w['title']) }}
+            
+                                              <button type = "submit" title="{{ trans('dash.remove') }}" class="btn btn-danger btn-xs"><i class="fa fa-times"></i> </button> 
+                                            {{ Form::close() }}
+            
+                                        @endif
+                                    </div> <!-- /.padder-v -->
+                                </div> <!-- /.item -->
+                            </div> <!-- /.col-xs-6.col-sm-4.col-md-3.col-lg-2 -->
+                        
+                      @endforeach
+                      @if (Request::segment(3) == 'favorites')
+                        {{ $favorite->appends(array())->links() }}
+                    @else
+                        {{ $watchlist->appends(array())->links() }}
+                    @endif
                 </div>
               </div>
             </section>

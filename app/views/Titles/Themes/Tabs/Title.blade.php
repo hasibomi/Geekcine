@@ -19,10 +19,15 @@
 @stop
 
 @section('bodytag')
-  <body class="nav-trans animate-nav title-page tabs-title" data-url="{{ url() }}">
+	<body>
 @stop
 
 @section('content')
+<section class="hbox stretch">
+	    <section>
+	    	
+	        <section class="vbox">
+	          <section class="scrollable padder-lg w-f-md" id="bjax-target">
   @include('Titles.Partials.Jumbotron')
 
   <section class="container push-footer-wrapper">
@@ -75,107 +80,110 @@
 <div class="modal fade animated fadeInBig" id="img-modal">
   <div class="modal-dialog"><div class="modal-content"><div class="modal-body"></div></div></div>
 </div>
-
+</section>
+</section>
+</section>
+</section>
 
 @section('scripts')
 
 <script>
     $(document).ready(function() {
-        @if(Sentry::check() and $data->getType() == 'movie')
-        // Open add link modal
-        $('.btn-add-link').click(function() {
-            $('#link-url, #captcha').val('');
-
-            // Get captcha
-            $.ajax({
-                type: 'Get',
-                url: '{{url("/getCaptcha")}}'
-            }).done(function(response) {
-                $('#captcha-img').attr('src', response.image);
-                $('#captcha-id').val(response.captcha_id);
-                $('#add-link-modal').modal('show');
-            });
-        });
-
-        // Reload captcha
-        $('#reload-captcha').click(function() {
-            $.ajax({
-                type: 'Get',
-                url: '{{url("/getCaptcha")}}',
-                beforeSend: function() {
-                    $('#captcha-img').removeAttr('src');
-                }
-            }).done(function(response) {
-                $('#captcha-img').attr('src', response.image);
-                $('#captcha-id').val(response.captcha_id);
-            });
-        });
-
-        $('#add-link').click(function() {
-            var title_id = {{$data->getId()}},
-                language_id = $('#link-language').val(),
-                quality = $('#link-quality').val(),
-                url = $('#link-url').val(),
-                captcha = $('#captcha').val(),
-                captcha_id = $('#captcha-id').val(),
-                that = this;
-
-            $.ajax({
-                type: 'Post',
-                url: '{{url("/links/add")}}',
-                dataType: 'Json',
-                data: {
-                    title_id: title_id,
-                    language_id: language_id,
-                    quality: quality,
-                    url: url,
-                    captcha: captcha,
-                    captcha_id: captcha_id
-                },
-                beforeSend: function() {
-                    $('.alert').addClass('hidden');
-                    $(that).button('loading');
-                }
-            }).done(function(response) {
-                if(response.status == 'success') {
-                    $('.alert-success').removeClass('hidden');
-                    window.location.reload();
-                } else if(response.status == 'error') {
-                    var html = '';
-                    for(key in response.error_msg) {
-                        html += '<li>' + response.error_msg[key] + '</li>';
-                    }
-
-                    $('.alert-danger').html(html).removeClass('hidden');
-                }
-            }).always(function() {
-                $(that).button('reset');
-            });
-        });
-
-        $('#report').click(function() {
-            var id = $('#link-id').val();
-
-            $.ajax({
-                type: 'Post',
-                url: '{{url("links/report")}}',
-                dataType: 'Json',
-                data: {
-                    id: id
-                }
-            }).done(function(response) {
-                if(response.status == 'error') {
-                    alert(response.error_msg);
-                } else {
-                    $('#reported-number').text(response.reported);
-                    
-                    if(response.reported == 20) {
-                        window.location.reload();
-                    }
-                }
-            });
-        });
-        @endif
+        if(Sentry::check() && $data->getType() == 'movie') {
+			// Open add link modal
+			$('.btn-add-link').click(function() {
+				$('#link-url, #captcha').val('');
+	
+				// Get captcha
+				$.ajax({
+					type: 'Get',
+					url: '{{url("/getCaptcha")}}'
+				}).done(function(response) {
+					$('#captcha-img').attr('src', response.image);
+					$('#captcha-id').val(response.captcha_id);
+					$('#add-link-modal').modal('show');
+				});
+			});
+	
+			// Reload captcha
+			$('#reload-captcha').click(function() {
+				$.ajax({
+					type: 'Get',
+					url: '{{url("/getCaptcha")}}',
+					beforeSend: function() {
+						$('#captcha-img').removeAttr('src');
+					}
+				}).done(function(response) {
+					$('#captcha-img').attr('src', response.image);
+					$('#captcha-id').val(response.captcha_id);
+				});
+			});
+	
+			$('#add-link').click(function() {
+				var title_id = {{$data->getId()}},
+					language_id = $('#link-language').val(),
+					quality = $('#link-quality').val(),
+					url = $('#link-url').val(),
+					captcha = $('#captcha').val(),
+					captcha_id = $('#captcha-id').val(),
+					that = this;
+	
+				$.ajax({
+					type: 'Post',
+					url: '{{url("/links/add")}}',
+					dataType: 'Json',
+					data: {
+						title_id: title_id,
+						language_id: language_id,
+						quality: quality,
+						url: url,
+						captcha: captcha,
+						captcha_id: captcha_id
+					},
+					beforeSend: function() {
+						$('.alert').addClass('hidden');
+						$(that).button('loading');
+					}
+				}).done(function(response) {
+					if(response.status == 'success') {
+						$('.alert-success').removeClass('hidden');
+						window.location.reload();
+					} else if(response.status == 'error') {
+						var html = '';
+						for(key in response.error_msg) {
+							html += '<li>' + response.error_msg[key] + '</li>';
+						}
+	
+						$('.alert-danger').html(html).removeClass('hidden');
+					}
+				}).always(function() {
+					$(that).button('reset');
+				});
+			});
+	
+			$('#report').click(function() {
+				var id = $('#link-id').val();
+	
+				$.ajax({
+					type: 'Post',
+					url: '{{url("links/report")}}',
+					dataType: 'Json',
+					data: {
+						id: id
+					}
+				}).done(function(response) {
+					if(response.status == 'error') {
+						alert(response.error_msg);
+					} else {
+						$('#reported-number').text(response.reported);
+						
+						if(response.reported == 20) {
+							window.location.reload();
+						}
+					}
+				});
+			});
+		}
 
         $('.movie-link').click(function() {
             var id = $(this).data('id'),

@@ -19,14 +19,14 @@
 @stop
 
 @section('bodytag')
-  <body class="nav-trans animate-nav" data-url="{{ url() }}">
+	<body>
 @stop
 
 @section('content')
-
+d
   @include('Titles.Themes.NoTabs.Jumbotron')
 
-  <section class="container push-footer-wrapper">
+  <section class="container push-footer-wrapper">dd
 
     <div class="yt-modal-box"></div> 
 

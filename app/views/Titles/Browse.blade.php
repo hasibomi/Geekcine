@@ -10,7 +10,7 @@
 <section class="hbox stretch">
 	<section>
 		<section class="vbox">
-			<section class="scrollable padder-lg w-f-md" id="bjax-target">
+			<section class="scrollable padder-lg" id="bjax-target">
 
 				{{-- Pagigntaion --}}
                 <div class="row pagination-top">{{ $data->appends(array())->links() }}
