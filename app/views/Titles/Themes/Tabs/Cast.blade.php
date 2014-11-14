@@ -1,26 +1,27 @@
-<section id="grid" class="order cast-grid">
+<section class="hbox">
+    <section>
+        <section class="scrollable padder-lg" id="bjax-target">
 
-    @foreach($data->getCast() as $k => $actor)
+            <div class="row row-sm">
+                @foreach($data->getCast() as $k => $actor)
+                
+                <div class="col-sm-6 col-md-3 col-lg-3" data-order="{{{ $k }}}">
+                    <div class="item">
+                        <div class="pos-rlt">
+                            <a href="{{ Helpers::url($actor['name'], $actor['id'], 'people') }}">
+                        <img src="{{{ asset($actor['image']) }}}" class="img-responsive" alt="{{ 'Picture of ' . $actor['name'] }}">
+                        </div>
+                        <div class="padder-v">
+                            <a href="{{ Helpers::url($actor['name'], $actor['id'], 'people') }}">{{{ $actor['name'] }}}</a> <br>
 
-      <figure class="col-sm-2" data-order="{{{ $k }}}">
+                          {{{ $actor['pivot']['char_name'] }}}
+                        </div>
+                    </div>
+                </div>
 
-        <div class="img-container">
-          
-          <a href="{{ Helpers::url($actor['name'], $actor['id'], 'people') }}">
-            <img src="{{{ asset($actor['image']) }}}" class="img-responsive" alt="{{ 'Picture of ' . $actor['name'] }}">
-          </a>         
-          
-          <figcaption>
-            <a href="{{ Helpers::url($actor['name'], $actor['id'], 'people') }}">{{{ $actor['name'] }}}</a> <br>
-
-              {{{ $actor['pivot']['char_name'] }}}
-
-          </figcaption>
-
-        </div>
-
-      </figure> 
-
-    @endforeach
-
+                @endforeach
+            </div>
+    
+        </section>
+    </section>
 </section>

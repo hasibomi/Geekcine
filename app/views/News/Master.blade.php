@@ -56,6 +56,21 @@
                                         <div class="m-t m-b">
                                             <a href="{{{ Helpers::url($n->title, $n->id, 'news') }}}" class="b-b b-info h4 text-u-c text-lt font-bold">{{{ $n['title'] }}}</a>
                                         </div>
+                                        @if(Helpers::hasAccess('news.delete'))
+                                            {{ Form::open(array('action' => array('NewsController@destroy', $n['id']), 'class' => 'pull-left padd-right', 'method' => 'delete')) }}
+                                                <button type="submit" class="btn btn-danger btn-sm">{{ trans('dash.delete') }}</button>
+                                                {{ Form::close() }}
+                                        @endif
+
+                                        @if(Helpers::hasAccess('news.edit'))
+                                            <a href="{{ Helpers::url($n->title, $n->id, 'news') . '/edit' }}" type="submit" class="btn btn-warning btn-sm">{{ trans('dash.edit') }}</a>
+                                        @endif
+
+                                        @if ($n->source != 'ScreenRant')
+                                            <div class="news-master-share">
+                                                <div class="news-master-share-inner" data-image="{{ $n->image }}" data-url="{{ Helpers::url($n->title, $n->id, 'news') }}" data-text="{{ $n->title }}"></div>
+                                            </div>
+                                        @endif
                                     </div>
                                     <a href="{{{ Helpers::url($n->title, $n->id, 'news') }}}"><img src="{{{ asset($n['image']) }}}" alt="{{ 'Image of News Item' . $k }}" class="img-full"></a>
                                 @else

@@ -103,8 +103,10 @@
         </div>
       </div>
 
-    </section>
-  </div>
+    
+      </div>
+  </section>
+    </div>
 </section>
 <div class="btn-group btns-under-jumbo center-block" style="background-color: {{ $data->getJumboMenuColor() }}">
   <ul>

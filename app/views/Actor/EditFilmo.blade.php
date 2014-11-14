@@ -10,72 +10,85 @@
 
 @section('content')
 
-<div class="container push-footer-wrapper">
+<section class="hbox stretch">
+    <section>
+        <section class="vbox">
+            <section class="scrollable padder-lg" id="bjax-target">
+                <div class="row row-sm">
+                    
+                    <h3 class="heading">
+                        {{ trans('main.editing filmo', array('name' => $actor['name'])) }} <i class="fa fa-pencil"></i>
+                    </h3>
+                    
+                    <a href="{{ Helpers::url($actor['name'], $actor['id'], 'people') }}" class="btn btn-success mar-bot"><i class="fa fa-arrow-left"></i> Back</a>
+                    
+                    <div class="row"> @include('Partials.Response') </div>
+                    
+                    <br>
+                    
+                    <div class="row">
+                        <table class="table table-condensed col-sm-12">
 
-	<div class="col-sm-12">
+                            <thead>
+                                <tr>
+                                    <th>{{ trans('main.type') }}</th>
+                                    <th>{{ trans('main.title') }}</th>
+                                    <th class="known-for-th">{{ trans('main.known for') }}</th>
+                                    <th></th>
+                                    <th>{{ trans('main.year') }}</th>
+                                    <th class="action-th">{{ trans('main.action') }}</th>
+                                </tr>
+                            </thead>
+                            
+                            <tbody>
+                                @foreach ($actor['title'] as $v)
 
-    	<h3 class="heading">{{ trans('main.editing filmo', array('name' => $actor['name'])) }} <i class="fa fa-pencil"></i></h3 class="heading">
+                                    <tr>
+                                        <td class="col-sm-1">
+                                            {{{ $v['type'] }}}
+                                        </td>
+                                        <td class="col-sm-5">
+                                            <a href="{{ Helpers::url($v['title'], $v['id'], $v['type']) }}">{{{ $v['title'] }}}</a>
+                                        </td>
+                                        <td class="col-sm-2 known-for-td">
 
-    	<a href="{{ Helpers::url($actor['name'], $actor['id'], 'people') }}" class="btn btn-success mar-bot"><i class="fa fa-arrow-left"></i> Back</a>
+                                            {{ Form::open(array('route' => 'people.knownFor')) }}
 
-    	<div class="row"> @include('Partials.Response') </div>
- 			
- 			<table class="table table-condensed col-sm-12">
-				<tbody>
+                                                {{ Form::select('known_for', array('1' => trans('dash.yes'), '0' => trans('dash.no')), ($v['pivot']['known_for'] ? 1 : 0), array('class' => 'form-control', 'onchange' => 'this.form.submit()')) }}
 
-				<thead>
-					<tr>
-						<th>{{ trans('main.type') }}</th>
-						<th>{{ trans('main.title') }}</th>
-						<th class="known-for-th">{{ trans('main.known for') }}</th>
-						<th></th>
-						<th>{{ trans('main.year') }}</th>
-						<th class="action-th">{{ trans('main.action') }}</th>
-					</tr>
-				</thead>
+                                                {{ Form::hidden('title_id', $v['id']) }}
+                                                {{ Form::hidden('actor_id', $actor['id']) }}
 
-					@foreach ($actor['title'] as $v)
+                                            {{ Form::close() }}
+                                        </td>
+                                        <td class="col-sm-1"></td>
+                                        <td class="col-sm-2">{{{ $v['release_date'] }}}</td>
+                                        <td class="col-sm-1 action-td">
 
-			        	<tr>
-			        		<td class="col-sm-1">
-			        			{{{ $v['type'] }}}
-			        		</td>
-			        		<td class="col-sm-5">
-			        			<a href="{{ Helpers::url($v['title'], $v['id'], $v['type']) }}">{{{ $v['title'] }}}</a>
-			        		</td>
-			        		<td class="col-sm-2 known-for-td">
+                                            {{ Form::open(array('route' => 'people.unlink', 'class' => 'pull-left')) }}
+                                                {{ Form::hidden('title', $v['id']) }}
+                                                {{ Form::hidden('actor', $actor['id']) }}
+                                                <button type ="submit" title="{{ trans('dash.delete') }}" class="btn btn-danger delete-cast-btn"><i class="fa fa-trash-o"></i></button>
+                                            {{ Form::close() }}
 
-			        			{{ Form::open(array('route' => 'people.knownFor')) }}
+                                            <a href ="{{ route( ($v['type'] == 'movie' ? Str::slug(trans('main.movies')) : Str::slug(trans('main.series'))) . '.edit', $v['id']) }}" class="btn btn-warning delete-cast-btn pull-right" title="{{ trans('main.edit') }}"><i class="fa fa-pencil"></i> </a>
 
-			        				{{ Form::select('known_for', array('1' => trans('dash.yes'), '0' => trans('dash.no')), ($v['pivot']['known_for'] ? 1 : 0), array('class' => 'form-control', 'onchange' => 'this.form.submit()')) }}
-								
-									{{ Form::hidden('title_id', $v['id']) }}
-			        				{{ Form::hidden('actor_id', $actor['id']) }}
+                                        </td>
+                                    </tr>
 
-								{{ Form::close() }}
-			        		</td>
-			        		<td class="col-sm-1"></td>
-			        		<td class="col-sm-2">{{{ $v['release_date'] }}}</td>
-			        		<td class="col-sm-1 action-td">
+                                @endforeach
 
-			        			{{ Form::open(array('route' => 'people.unlink', 'class' => 'pull-left')) }}
-						            {{ Form::hidden('title', $v['id']) }}
-						            {{ Form::hidden('actor', $actor['id']) }}
-						            <button type ="submit" title="{{ trans('dash.delete') }}" class="btn btn-danger delete-cast-btn"><i class="fa fa-trash-o"></i></button>
-						        {{ Form::close() }}
-
-						        <a href ="{{ route( ($v['type'] == 'movie' ? Str::slug(trans('main.movies')) : Str::slug(trans('main.series'))) . '.edit', $v['id']) }}" class="btn btn-warning delete-cast-btn pull-right" title="{{ trans('main.edit') }}"><i class="fa fa-pencil"></i> </a>
-						           
-			        		</td>
-			        	</tr>
-			      		 
-					@endforeach
-
-				</tbody>
-			</table>
-    </div>
-<div class="push"></div>
-</div>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="push"></div>
+                    
+                </div>
+            </section>
+        </section>
+    </section>
+</section>
 
 @stop
 

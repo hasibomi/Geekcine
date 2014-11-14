@@ -1,65 +1,7 @@
 <div class="row">
   @if (date('Y-m-d', strtotime($data->getReleaseDate())) < Carbon\Carbon::now()->toDateString() || strlen($data->getReleaseDate()) <= 4)
 
-<section class="col-sm-6">
-  <div class="bordered-heading"><span class="text-border-top"><i class="fa fa-thumbs-o-down"></i> {{ trans('main.critic reviews') }}</span>
-  
-    @if (Helpers::hasAccess('reviews.update'))
-
-      {{ Form::open(array('url' => 'private/update-reviews', 'class' => 'pull-right')) }}
-        {{ Form::hidden('id', $data->getId()) }}
-      <button type = "submit" title="{{ trans('dash.delete') }}" class="btn btn-info btn-xs"><i class="fa fa-refresh"></i> {{ trans('main.update') }}</button>
-      {{ Form::close() }}
-
-    @endif
-
-  </div>
-    @if ($data->getCriticReviews())
-
-      @foreach(array_slice($data->getCriticReviews(), 0, 10) as $k => $r)
-
-         @if ($k == 4)
-          @if($ad = $options->getTitleCriticAd())
-              <div class="row ads-row">{{ $ad }}</div>
-              <hr>
-          @endif
-         @endif
-
-        <div class="row review-info">
-          <span class="review-score"><span>{{{ $r['score'] }}}</span></span> {{ trans('main.by') }} 
-
-          @if ($r['author'])
-            <strong>{{{ $r['author'] }}}</strong> - 
-          @endif
-
-          <strong>{{{ $r['source'] }}}</strong>
-        </div>
-
-        <p class="review-body">{{{ $r['body'] }}}</p>
-
-        <p class="row review-full">
-          <a target="_blank" href="{{{ $r['link'] }}}">{{ trans('main.full review') }} <i class="icon-share-alt"></i></a>
-          
-          @if(Helpers::hasAccess('reviews.delete'))
-
-            {{ Form::open(array('url' => Request::url() . '/reviews/' . $r['id'], 'class' => 'trash-ico-critic', 'method' => 'delete')) }}
-              {{ Form::hidden('id', $data->getId()) }}
-              <button type = "submit" title="{{ trans('dash.delete') }}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> </button>
-            {{ Form::close() }}
-
-          @endif
-
-        </p>
-
-        <hr> 
-
-      @endforeach
-    @else
-      <strong>{{ trans('main.no critic reviews') }}</strong>
-    @endif
-</section>
-
-<section class="col-sm-6">
+<section class="col-sm-12">
 
   <div class="bordered-heading hidden-sm">
     <span class="text-border-top"> <i class="fa fa-thumbs-o-up"></i> {{ trans('main.user reviews') }}</span>
@@ -118,6 +60,65 @@
 
   @endif
 
+</section>  
+
+<section class="col-sm-12">
+  <div class="bordered-heading"><span class="text-border-top"><i class="fa fa-thumbs-o-down"></i> {{ trans('main.critic reviews') }}</span>
+      
+  
+    @if (Helpers::hasAccess('reviews.update'))
+
+      {{ Form::open(array('url' => 'private/update-reviews', 'class' => 'pull-right')) }}
+        {{ Form::hidden('id', $data->getId()) }}
+        <button type = "submit" title="{{ trans('dash.delete') }}" class="btn btn-info btn-xs pull-right"><i class="fa fa-refresh"></i> {{ trans('main.update') }}</button>
+      {{ Form::close() }}
+
+    @endif
+
+  </div>
+    @if ($data->getCriticReviews())
+
+      @foreach(array_slice($data->getCriticReviews(), 0, 10) as $k => $r)
+
+         @if ($k == 4)
+          @if($ad = $options->getTitleCriticAd())
+              <div class="row ads-row">{{ $ad }}</div>
+              <hr>
+          @endif
+         @endif
+
+        <div class="row review-info">
+          <span class="review-score"><span>{{{ $r['score'] }}}</span></span> {{ trans('main.by') }} 
+
+          @if ($r['author'])
+            <strong>{{{ $r['author'] }}}</strong> - 
+          @endif
+
+          <strong>{{{ $r['source'] }}}</strong>
+        </div>
+
+        <p class="review-body">{{{ $r['body'] }}}</p>
+
+        <p class="row review-full" style="margin-left: 1%">
+          <a target="_blank" href="{{{ $r['link'] }}}">{{ trans('main.full review') }} <i class="icon-share-alt"></i></a>
+          
+          @if(Helpers::hasAccess('reviews.delete'))
+
+            {{ Form::open(array('url' => Request::url() . '/reviews/' . $r['id'], 'class' => 'trash-ico-critic', 'method' => 'delete')) }}
+              {{ Form::hidden('id', $data->getId()) }}
+              <button type = "submit" title="{{ trans('dash.delete') }}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> </button>
+            {{ Form::close() }}
+
+          @endif
+
+        </p>
+
+        <hr> 
+
+      @endforeach
+    @else
+      <strong>{{ trans('main.no critic reviews') }}</strong>
+    @endif
 </section>
 
 @else

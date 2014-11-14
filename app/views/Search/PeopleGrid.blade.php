@@ -1,5 +1,10 @@
 @if ( isset($actors) && ! $actors->isEmpty() )
 
+<section class="hbox stretch">
+    <section>
+            <section class="scrollable padder-lg">
+                <div class="row row-sm">
+
 	<div id="grid3" class="browse-grid">
 
 	@foreach($actors as $k => $r)
@@ -27,3 +32,8 @@
 	<div><h3 class="reviews-not-released">{{ trans('main.no actors found') }}</h3></div>
 
 @endif
+
+</div>
+            </section>
+        </section>
+    </section>

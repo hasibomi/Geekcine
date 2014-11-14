@@ -1,12 +1,11 @@
 @if ( ! empty($similar) && isset($similar[1]) )
-
 <section id="grid2" class="browse-grid">
 
     @foreach($similar as $k => $v)
 
       @unless($v->title == $data->getTitle())
 
-        <figure class="col-sm-2">
+        <figure class="col-sm-3">
 
           <div class="img-container">
             

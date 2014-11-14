@@ -19,7 +19,7 @@
 		</div>
 
     	<div class="col-xs-6 hidden-xs">
-			<ul class="btn-group">
+			<ul class="nav-tabs nav">
 			    <li><a id="trigger" href="#movies" class="btn" data-toggle="tab"><i class="fa visible-xs fa-users"></i><span class="hidden-xs">{{ trans('main.movies') }}</span></a></li>
 			    <li><a id="trigger2" href="#series" class="btn" data-toggle="tab"><i class="fa visible-xs fa-thumbs-up"></i><span class="hidden-xs">{{ trans('main.series') }}</span></a></li>			
 			    <li><a id="trigger3" href="#people" class="btn no-bord-right" data-toggle="tab"><i class="fa fa-video-camera visible-xs"></i><span class="hidden-xs">{{ trans('main.people') }}</span></a></li>

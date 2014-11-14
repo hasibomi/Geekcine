@@ -16,7 +16,7 @@
                 <div class="row pagination-top">{{ $data->appends(array())->links() }}
             
                     @if(Helpers::hasAccess('titles.create'))	
-                        <a style="margin-bottom:10px" href="{{ url(Str::slug(trans('main.movies')) . '/create') }}" class="pull-right hidden-xs btn btn-success">{{ trans('main.create new') }}</a>
+                        <a style="margin-bottom:10px; margin-top: 15px" href="{{ url(Str::slug(trans('main.movies')) . '/create') }}" class="pull-right hidden-xs btn btn-success">{{ trans('main.create new') }}</a>
                     @endif
                 
               </div>

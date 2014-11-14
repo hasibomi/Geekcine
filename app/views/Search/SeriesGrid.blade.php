@@ -1,5 +1,10 @@
 @if ( isset($data) && ! $data->isEmpty() )
 
+<section class="hbox stretch">
+    <section>
+            <section class="scrollable padder-lg">
+                <div class="row row-sm">
+
 	<div id="grid2" class="browse-grid">
 
 	@foreach($data as $k => $r)
@@ -45,3 +50,8 @@
 	<div><h3 class="reviews-not-released">{{ trans('main.no series found') }}</h3></div>
 
 @endif
+
+</div>
+            </section>
+        </section>
+    </section>

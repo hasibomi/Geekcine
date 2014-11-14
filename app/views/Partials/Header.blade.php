@@ -19,13 +19,13 @@
             </a>
         </li>
     </ul>
-    <form class="navbar-form navbar-left input-s-lg m-t m-l-n-xs hidden-xs" role="search">
+    <form action="{{ Str::slug(trans('main.search')) }}" class="navbar-form navbar-left input-s-lg m-t m-l-n-xs hidden-xs" role="search" method="GET">
         <div class="form-group">
             <div class="input-group">
                 <span class="input-group-btn">
                     <button type="submit" class="btn btn-sm bg-white btn-icon rounded"><i class="fa fa-search"></i></button>
                 </span>
-                <input type="text" class="form-control input-sm no-border rounded" placeholder="Search songs, albums...">
+                <input id="auto-complete" type="text" name="q" class="form-control input-sm no-border rounded" placeholder="{{ trans('main.search placeholder') }}" data-url="{{ url('typeahead') }}">
             </div>
         </div>
     </form>
@@ -33,7 +33,7 @@
         <ul class="nav navbar-nav m-n hidden-xs nav-user user">
             
             @if( ! Sentry::check())
-
+                <li><a href="/login">Login <i class="icon icon-login"></i></a></li>
             @else
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown">

@@ -1,0 +1,8 @@
+[2014-11-09 15:06:43] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Maximum execution time of 60 seconds exceeded' in C:\Users\Omi\Dropbox\Web Projects\Elance\MappyLord\Geekcin\vendor\laravel\framework\src\Illuminate\Exception\Handler.php:257
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-11-09 15:21:36] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Maximum execution time of 60 seconds exceeded' in C:\Users\Omi\Dropbox\Web Projects\Elance\MappyLord\Geekcin\vendor\laravel\framework\src\Illuminate\Exception\Handler.php:257
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []

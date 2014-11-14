@@ -84,7 +84,7 @@
 		        @if (isset($actors) && ! $actors->isEmpty())
 	            <div class="row">
 	              <div class="col-md-7">
-	                <h3 class="font-thin">{{ trans('main.popular actors') }}</h3>
+	                <h3>{{ trans('main.popular actors') }}</h3>
 	                <div class="row row-sm">
 	                	@foreach($actors as $k => $v)
 		                  	<div class="col-xs-6 col-sm-3">
@@ -160,6 +160,61 @@
 	              </div>
 	            </div>
 	            @endif
+                
+                <div class="row">
+                    
+                    <h3>{{ trans('main.latest news') }}</h3>
+                    
+                    <div class="row row-sm">
+                    
+                        @foreach($news->slice(0,6) as $k => $n)
+
+                            @if ($k == 3)
+
+                                @if($ad = $options->getHomeNewsAd())
+                                    <div class="ads-row">{{ $ad }}</div>
+                                @endif
+
+                            @endif
+
+                            <div class="col-sm-3">
+                                <div class="item">
+                                    <div class="pos-rlt">
+                                        @if ($options->scrapeNewsFully())
+                                            <a class="pull-left hidden-xs" href="{{{ Helpers::url($n->title, $n->id, 'news') }}}">
+                                                <img style="max-width:235px" class="media-object img-responsive" src="{{{ asset($n->image) }}}" alt="{{ 'Image of News Item' . $k }}">
+                                            </a>
+                                        @else
+                                            <a class="pull-left hidden-xs" href="{{{ $n->full_url ? $n->full_url : Helpers::url($n->title, $n->id, 'news') }}}">
+                                                <img style="max-width:235px" class="media-object img-responsive" src="{{{ asset($n->image) }}}" alt="{{ 'Image of News Item' . $k }}">
+                                            </a>
+                                        @endif
+                                    </div>
+                                    <div class="padder-v">
+                                        @if ($options->scrapeNewsFully())
+                                            <h4 class="media-heading"><a href="{{{ Helpers::url($n->title, $n->id, 'news') }}}">{{{ $n['title'] }}}</a> </h4>
+                                       @else
+                                           <h4 class="media-heading"><a href="{{{ $n['full_url'] ? $n['full_url'] : Helpers::url($n->title, $n->id, 'news') }}}">{{{ $n['title'] }}}</a> </h4>
+                                       @endif
+                                    </div>
+
+                                    <span class="home-news-time pull-left"> {{ trans('main.from') }} {{{ $n['source'] ? $n['source'] : trans('main.brand') }}}
+                                        <span class="home-news-ago"><i class="fa fa-clock-o"></i> 
+                                            {{ \Carbon\Carbon::createFromTimeStamp(strtotime($n['created_at']))->diffForHumans() }}
+                                        </span>
+
+                                        @if ($options->scrapeNewsFully())
+                                             <a href="{{{ Helpers::url($n->title, $n->id, 'news') }}}">{{ trans('main.read full article') }} <i class="fa fa-external-link"></i></a>
+                                        @else
+                                            <a href="{{{ $n['full_url'] ? $n['full_url'] : Helpers::url($n->title, $n->id, 'news') }}}">{{ trans('main.read full article') }} <i class="fa fa-external-link"></i></a>
+                                        @endif
+
+                                    </span>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
                 
                 @if ( ! Sentry::check() )
                     <div class="row m-t-lg m-b-lg">

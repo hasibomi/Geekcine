@@ -10,34 +10,45 @@
 
 @section('content')
 
-<div class="container">
-
-	<div class="col-sm-12">
-
-    	<h3 class="heading">{{ trans('main.edit title heading', array('title' => $actor['name'])) }} <i class="fa fa-pencil"></i></h3 class="heading">
-
-    	<p class="padding-top-bot"> {{ trans('main.edit cast expl') }} </p>
-
-    	<div class="row"> @include('Partials.Response') </div>
- 			
- 			{{ Form::model($actor, array('route' => array(Str::slug(trans('main.people')) . '.update', $actor['id']), 'method' => 'PUT')) }}
+<section class="hbox stretch">
+    <section>
+        <section class="vbox">
+            <section class="scrollable padder-lg" id="bjax-target">
+                <div class="row row-sm">
+                    
+                    <h3 class="heading">
+                        {{ trans('main.edit title heading', array('title' => $actor['name'])) }}
+                        <i class="fa fa-pencil"></i>
+                    </h3>
+                    
+                    <p class="padding-top-bot"> {{ trans('main.edit cast expl') }} </p>
+                    
+                    <div class="row"> @include('Partials.Response') </div>
+                    
+                    <div class="row">
+                        {{ Form::model($actor, array('route' => array(Str::slug(trans('main.people')) . '.update', $actor['id']), 'method' => 'PUT')) }}
 			
-				@include('Actor.Partials.CreateEditForm')
+                            @include('Actor.Partials.CreateEditForm')
 
 
-				{{ Form::hidden('id', $actor['id']) }}
-				{{ Form::hidden('allow_update', 0) }}
+                            {{ Form::hidden('id', $actor['id']) }}
+                            {{ Form::hidden('allow_update', 0) }}
 
-				<a type="button" href="{{ url(Str::slug(trans('main.people')) .'/'. Request::Segment(2)) }}" class="btn btn-warning">
-					<i class="fa fa-arrow-left"></i> {{ trans('main.back') }}
-					</a>
+                            <a type="button" href="{{ url(Str::slug(trans('main.people')) .'/'. Request::Segment(2)) }}" class="btn btn-warning">
+                                <i class="fa fa-arrow-left"></i> {{ trans('main.back') }}
+                                </a>
 
-				{{ Form::submit( trans('main.update'), array('class' => 'btn btn-success') ) }}
+                            {{ Form::submit( trans('main.update'), array('class' => 'btn btn-success') ) }}
 
-			{{ Form::close() }}
-        
-    </div>
-</div>
+                        {{ Form::close() }}
+                        <br>
+                    </div>
+                    
+                </div> <!-- /.row.row-sm -->
+            </section> <!-- /section#bjax-target.scrollable.padder-lg -->
+        </section> <!-- /section.vbox -->
+    </section> <!-- /section -->
+</section> <!-- /section.hbox.stretch -->
 
 @stop
 

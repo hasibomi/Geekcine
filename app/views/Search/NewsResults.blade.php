@@ -71,3 +71,8 @@
 	<div><h3 class="reviews-not-released">{{ trans('main.no news items found') }}</h3></div>
 
 @endif
+
+    </div>
+</section>
+    </section>
+    </section>

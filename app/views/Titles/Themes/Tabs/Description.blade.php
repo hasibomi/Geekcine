@@ -1,4 +1,4 @@
-<section class="row images-row">
+<section class="row images-row sc vbox">
 
      @if ($data->getImages())
 

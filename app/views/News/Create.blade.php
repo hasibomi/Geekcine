@@ -11,36 +11,49 @@
 
 @section('content')
 	
-	<div class="container push-footer-wrapper">
+<section class="hbox stretch">
+    <section>
+        <section class="vbox">
+            <section class="scrollable padder-lg">
+                <div class="row row-sm">
+                    
+                    <div class="row">@include('Partials.Response')</div>
+                    
+                    <div class="row">
+                        {{ Form::open(array('action' => 'NewsController@store', 'cols' => 22)) }}
 
-		@include('Partials.Response')
-		
-		{{ Form::open(array('action' => 'NewsController@store', 'cols' => 22)) }}
+                            <div class="row form-group">
+                                {{ Form::label('title', trans('main.title') ) }}
+                                {{ Form::text('title', null, array('class' => 'form-control')) }}
+                                {{ $errors->first('title', '<span class="help-block alert alert-danger">:message</span>') }}
+                            </div>
 
-			<div class="row form-group">
-    			{{ Form::label('title', trans('main.title') ) }}
-    			{{ Form::text('title', null, array('class' => 'form-control')) }}
-    			{{ $errors->first('title', '<span class="help-block alert alert-danger">:message</span>') }}
-  			</div>
+                            <div class="row form-group">
+                                {{ Form::label('image', trans('main.image path') ) }}
+                                {{ Form::text('image', null, array('class' => 'form-control')) }}
+                                {{ $errors->first('image', '<span class="help-block alert alert-danger">:message</span>') }}
+                            </div>
 
-  			<div class="row form-group">
-    			{{ Form::label('image', trans('main.image path') ) }}
-    			{{ Form::text('image', null, array('class' => 'form-control')) }}
-    			{{ $errors->first('image', '<span class="help-block alert alert-danger">:message</span>') }}
-  			</div>
+                            <div class="row form-group">
+                                {{ Form::label('body', trans('main.body') ) }}
+                                {{ Form::textarea('body', null, array('class' => 'ckeditor', 'rows' => 22, 'cols' => 10)) }}
+                                {{ $errors->first('body', '<span class="help-block alert alert-danger">:message</span>') }}
+                            </div>
 
-			<div class="row form-group">
-				{{ Form::label('body', trans('main.body') ) }}
-				{{ Form::textarea('body', null, array('class' => 'ckeditor', 'rows' => 22, 'cols' => 10)) }}
-				{{ $errors->first('body', '<span class="help-block alert alert-danger">:message</span>') }}
-			</div>
-	
-			<button type="submit" class="btn btn-default">{{ trans('dash.create') }}</button>
-	    
-	    {{ Form::close() }}
-	
-	<div class="push"></div>
-	</div>
+                            <button type="submit" class="btn btn-default">{{ trans('dash.create') }}</button>
+
+                        {{ Form::close() }}
+                        
+                        <br>
+                    </div>
+                    
+                    <div class="push"></div>
+                    
+                </div>
+            </section>
+        </section>
+    </section>
+</section>	
 
 @section('scripts')
 
