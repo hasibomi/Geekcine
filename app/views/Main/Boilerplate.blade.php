@@ -36,26 +36,28 @@
 <body class="">
   <section class="vbox">
 
-      @include("Partials.Header")
+    @include("Partials.Header")
 
-      <section>
-          <section class="hbox stretch">
-              <!-- .aside -->
-              <aside class="bg-black dk aside hidden-print" id="nav">
+    <section>
+      <section class="hbox stretch">
+        <!-- .aside -->
+        <aside class="bg-black dk aside hidden-print" id="nav">
 
-                  <section class="vbox">
+          <section class="vbox">
 
-                      @include('Partials.Navbar')
+            @include('Partials.Navbar')
 
-                  </section>
-              </aside>
-              <!-- /.aside -->
-              <section id="content">
-                  @yield('content')
-                  <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
-              </section>
           </section>
+        </aside>
+        <!-- /.aside -->
+        <section id="content">
+
+          @yield('content')
+          
+          <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
+        </section>
       </section>
+    </section>
   </section>
  {{ HTML::script('assets/js/jquery.min.js') }}
  {{ HTML::script('assets/js/bootstrap.js') }}
@@ -65,6 +67,8 @@
  {{ HTML::script('assets/js/jPlayer/jquery.jplayer.min.js') }}
  {{ HTML::script('assets/js/jPlayer/add-on/jplayer.playlist.min.js') }}
  {{ HTML::script('assets/js/jPlayer/demo.js') }}
+
  @yield('scripts')
+
 </body>
 </html>

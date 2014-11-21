@@ -12,31 +12,57 @@
 
 @section('content')
 	
-	<div class="container push-footer-wrapper">
-		
-		@include('Users.Partials.Header')
+<section class="vbox">
+  <section class="scrollable padder-lg" id="bjax-target" style="padding: 0">
+    <section class="hbox stretch">
+    	
+    	@include('Users.Partials.Timeline')
+    	
+        <aside class="bg-white">
+          <section class="vbox">
+            
+              @include ('Users.Partials.Header')
+            
+            <section class="scrollable">
+              <div class="tab-content">
+                <div class="tab-pane active" id="activity">
+                
+                	<br>
 
-		<div class="lists-wrapper reviews">
-			
-			@foreach ($reviews as $k => $r)
+                    <div class="container row" style="width: 99%; margin: auto;"> @include('Partials.Response') </div>
 
-			<li>			
-				<div class="row review-info">
-                	<span class="review-score"><span>{{{ $r->score * 10 }}}</span></span>  <strong>{{ \Carbon\Carbon::createFromTimeStamp(strtotime($r->created_at))->diffForHumans() }}</strong> - <strong>{{ Title::find($r->title_id)->title }}</strong>
-	            </div>
+                      @foreach ($reviews as $k => $r)
 
-	            <p class="review-body">{{{ $r->body }}}</p>
+						<li>			
+							<div class="row review-info">
+			                	<span class="review-score"><span>{{{ $r->score * 10 }}}</span></span>  <strong>{{ \Carbon\Carbon::createFromTimeStamp(strtotime($r->created_at))->diffForHumans() }}</strong> - <strong>{{ Title::find($r->title_id)->title }}</strong>
+				            </div>
 
-	            <hr> 
-			</li>
+				            <p class="review-body">{{{ $r->body }}}</p>
 
-		@endforeach
+				            <hr> 
+						</li>
 
-		{{ $reviews->links() }}
-			
-		</div>
-	<div class="push"></div>
-	</div>
+					@endforeach
+
+                      @if (Request::segment(3) == 'favorites')
+                        {{ $favorite->appends(array())->links() }}
+                    @else
+                        {{ $watchlist->appends(array())->links() }}
+                    @endif
+
+                </div>
+              </div>
+              <div class="push"></div>
+            </section>
+          </section>
+        </aside>
+    </section>
+    <!-- /section.hbox.stretch -->
+  </section>
+  <!-- /section#bjax-target.scrollable.padder-lg.w-f-md -->
+</section>
+<!-- /section.vbox -->
 
 @stop
 

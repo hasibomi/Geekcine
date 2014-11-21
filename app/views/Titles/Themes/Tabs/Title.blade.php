@@ -24,7 +24,7 @@
 
 @section('content')
 
-<section class="vbox">
+<section class="vbox" style="display: block;">
     <section class="hbox stretch bg-black dker">
         <aside class="col-sm-5 no-padder" id="sidebar">
             <section class="vbox animated fadeInUp">
@@ -195,7 +195,7 @@
             </section> {{-- /section.vbox.animated.fadeInUp --}}
         </aside> {{-- /aside#sidebar.col-sm-5.no-padder --}}
 
-        <section class="col-sm-4 no-padder bg">
+        <section class="col-sm-5 no-padder">
             <section class="vbox">
                 <section class="scrollable hover">
                     <div class="btn-group">
@@ -249,7 +249,7 @@
 
 @section('scripts')
 
-<script>
+<script type="text/javascript">
     $(document).ready(function() {
         @if(Sentry::check() and $data->getType() == 'movie')
         // Open add link modal

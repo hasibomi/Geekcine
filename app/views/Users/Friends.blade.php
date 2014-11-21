@@ -11,13 +11,24 @@
 @stop
 
 @section('content')
-<section class="hbox stretch">
-	<section>
-		<section class="vbox">
-			<section class="scrollable padder-lg" id="bjax-target">
-            	@include('Users.Partials.Header')
-            	<br>
-            	<ul class="nav nav-tabs">
+    
+<section class="vbox">
+  <section class="scrollable padder-lg" id="bjax-target" style="padding: 0">
+    <section class="hbox stretch">
+        
+        @include('Users.Partials.Timeline')
+        
+        <aside class="bg-white">
+          <section class="vbox">
+            
+              @include ('Users.Partials.Header')
+            
+            <section class="scrollable">
+              <div class="tab-content">
+                <div class="tab-pane active" id="activity">
+                
+                    <br>
+                <ul class="nav nav-tabs">
                     <li class="active"><a href="#list" data-toggle="tab">Friend list</a></li>
     
                     @if(Helpers::isUser($user->username))
@@ -25,7 +36,7 @@
                     @endif
                 </ul>
                 <div class="tab-content">
-                	<br>
+                    <br>
                     <div class="tab-pane active" id="list">
                         @if($friends != NULL)
                             @foreach($friends as $friend)
@@ -50,7 +61,7 @@
                             </div>
                             @endforeach
                         @else
-                        <div class="alert alert-danger">No friends yet!</div>
+                        <div class="alert alert-danger" style="width: 99%; margin: auto;">No friends yet!</div>
                         @endif
                     </div>
     
@@ -139,15 +150,25 @@
                             @endforeach
                         </table>
                         @else
-                        <div class="alert alert-danger">No friends yet!</div>
+                        <div class="alert alert-danger" style="width: 99%; margin: auto;">No friends yet!</div>
                         @endif
                     </div>
                     @endif
                 </div>
+
+                </div>
+              </div>
+              <div class="push"></div>
             </section>
-        </section>
+          </section>
+        </aside>
     </section>
+    <!-- /section.hbox.stretch -->
+  </section>
+  <!-- /section#bjax-target.scrollable.padder-lg.w-f-md -->
 </section>
+<!-- /section.vbox -->
+
 @stop
 
 @section('ads')

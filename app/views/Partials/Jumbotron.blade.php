@@ -13,7 +13,7 @@
                   		<span class="input-group-btn search-btn-ie-fix" title="GO!">
                     		<button class="btn btn-default search-button home-search-btn" type="submit"><i class="fa fa-search"></i></button>
                   		</span>
-		          	</div>	     
+		          	</div>
 
 		        {{ Form::close() }}		      
 			</div>

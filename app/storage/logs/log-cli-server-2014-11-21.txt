@@ -1,0 +1,4 @@
+[2014-11-21 18:48:41] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '=>' (T_DOUBLE_ARROW)' in C:\Users\Omi\Dropbox\Web Projects\Elance\MappyLord\Geekcin\app\storage\views\27bc8089cb41fc40e66367e997e7105d:70
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []

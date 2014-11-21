@@ -4,8 +4,7 @@
             <i class="icon-list"></i>
         </a>
         <a href="/" class="navbar-brand text-lt">
-            <img src="{{ asset('assets/images/K1TFYQqZG9jHHHpXaNOp.png') }}" alt="." class="hide">
-            <span class="hidden-nav-xs m-l-sm"><img src="{{ asset('assets/images/K1TFYQqZG9jHHHpXaNOp.png') }}" alt=""></span>
+            <img src="{{ asset('assets/images/K1TFYQqZG9jHHHpXaNOp.png') }}" alt="." style="width: 80%; margin: auto;">
         </a>
         <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".user">
             <i class="icon-settings"></i>
@@ -19,16 +18,18 @@
             </a>
         </li>
     </ul>
-    <form action="{{ Str::slug(trans('main.search')) }}" class="navbar-form navbar-left input-s-lg m-t m-l-n-xs hidden-xs" role="search" method="GET">
+    
+    {{ Form::open(array('url' => Str::slug(trans('main.search')), 'method' => 'GET', 'class'=>'navbar-form navbar-left input-s-lg m-t m-l-n-xs hidden-xs', 'role'=>'search')) }}
         <div class="form-group">
             <div class="input-group">
                 <span class="input-group-btn">
                     <button type="submit" class="btn btn-sm bg-white btn-icon rounded"><i class="fa fa-search"></i></button>
                 </span>
-                <input id="auto-complete" type="text" name="q" class="form-control input-sm no-border rounded" placeholder="{{ trans('main.search placeholder') }}" data-url="{{ url('typeahead') }}">
+                {{ Form::text('q', null, array('id' => 'auto-complete', 'class' => 'form-control input-sm no-border rounded', 'placeholder' => trans('main.search placeholder'), 'data-url' => url('typeahead'))) }}
             </div>
         </div>
-    </form>
+    {{ Form::close() }}
+    
     <div class="navbar-right ">
         <ul class="nav navbar-nav m-n hidden-xs nav-user user">
             
@@ -43,10 +44,6 @@
                         {{{ Helpers::loggedInUser()->first_name ? Helpers::loggedInUser()->first_name : Helpers::loggedInUser()->username }}} <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu animated fadeInRight">
-                        <li>
-                            <span class="arrow top"></span>
-                            <a href="#">Settings</a>
-                        </li>
                         <li>
                             <a href="{{ Helpers::profileUrl() }}">Profile</a>
                         </li>

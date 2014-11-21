@@ -10,30 +10,44 @@
 
 @section('content')
 
-<div class="container">
+<section class="hbox stretch">
 
-	<div class="col-sm-12">
+	<section>
 
-    	<h3 class="heading">{{ trans('main.add a new actor') }} <i class="fa fa-pencil"></i></h3 class="heading">
+		<section class="vbox">
 
-    	<div class="row padding-top-bot"> @include('Partials.Response') </div>
- 			
- 			{{ Form::open(array('route' => array(Str::slug(trans('main.people')) . '.store'))) }}
-			
-				@include('Actor.Partials.CreateEditForm')
+			<section class="scrollable padder-lg" id="bjax-target">
 
-				{{ Form::hidden('allow_update', 0) }}
+				<div class="col-sm-12">
 
-				<a type="button" href="{{ url('people') }}" class="btn btn-warning">
-					<i class="fa fa-arrow-left"></i> {{ trans('main.back') }}
-				</a>
+			    	<h3 class="heading">{{ trans('main.add a new actor') }} <i class="fa fa-pencil"></i></h3 class="heading">
 
-				{{ Form::submit( trans('dash.create'), array('class' => 'btn btn-success') ); }}
+			    	<div class="row padding-top-bot"> @include('Partials.Response') </div>
+			 			
+		 			{{ Form::open(array('route' => array(Str::slug(trans('main.people')) . '.store'))) }}
+					
+						@include('Actor.Partials.CreateEditForm')
 
-			{{ Form::close() }}
-        
-    </div>
-</div>
+						{{ Form::hidden('allow_update', 0) }}
+
+						<a type="button" href="{{ url('people') }}" class="btn btn-warning">
+							<i class="fa fa-arrow-left"></i> {{ trans('main.back') }}
+						</a>
+
+						{{ Form::submit( trans('dash.create'), array('class' => 'btn btn-success') ); }}
+
+					{{ Form::close() }}
+
+					<br>
+			        
+			    </div>
+
+		    </section>
+
+	    </section>
+
+    </section>
+</section>
 
 @stop
 

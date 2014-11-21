@@ -6,6 +6,8 @@
         <div class="review-form-heading"> {{ trans('main.write a review', array('title' => $data->getTitle())) }} </div>
       </div>
 
+      <br>
+
       <div class="modal-body">
 
         <section class="review-form">
@@ -13,7 +15,7 @@
           {{ Form::open(array('route' => array(Str::slug(trans('main.movies')) . '.reviews.store'), 'data-path' => asset('assets/images'), 'data-url' => Request::url(), 'id' => 'user-review-form')) }}
             
             <p class="pull-left">{{ trans('main.your rating') }}:</p>
-
+            
             <div class="row">
               <div id="rating" class="pull-left"></div>
               <div class="current pull-left"></div>

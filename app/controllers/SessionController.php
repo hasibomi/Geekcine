@@ -200,10 +200,15 @@ class SessionController extends BaseController {
 	 */
 	public function logOut()
 	{
-		Sentry::logout();
-		$this->social->logout();
+		//Sentry::logout();
+		if ($this->social->logout())
+        {
+            return Redirect::to('/');
+        }
 
-		return Redirect::to('/');
+		//return Redirect::to('/');
+        $query = User::where('username', Sentry::getUser()->username);
+        return View::make('Main.Logout')->with('user', $query);
 	}
 
 }

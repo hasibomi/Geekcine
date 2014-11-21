@@ -24,13 +24,15 @@
 	          <section class="scrollable padder-lg" id="bjax-target">
 
 
+
+
 	          	@if (Helpers::hasAccess('titles.update'))
 
-				{{ Form::open(array('route' => 'titles.updatePlaying', 'class' => 'pull-right in-heading-form')) }}
+					{{ Form::open(array('route' => 'titles.updatePlaying', 'class' => 'pull-right in-heading-form')) }}
 
-                	<button type="submit" class="pull-right text-muted m-t-lg" data-toggle="class:fa-spin"><i class="icon-refresh i-lg  inline" id="refresh"></i> {{ trans('dash.update') }}</button>
+	                	<button type="submit" class="btn btn-info btn-sm pull-right text-muted m-t-lg"><i class="icon-refresh i-lg  inline" id="refresh"></i> {{ trans('dash.update') }}</button>
 
-              	{{ Form::close() }}
+	              	{{ Form::close() }}
 
 				@endif
                 
@@ -43,13 +45,18 @@
 	             <span class="bar4 a4 bg-warning dk"></span>
 	             <span class="bar5 a5 bg-danger dker"></span>
 	           </span></h2>
+
+	           	@include('Partials.Response')
+	           	
 	           <h3>{{ trans('main.in theaters') }}</h3>
 	           	<div class="row row-sm">
 	           		@foreach($playing->slice(0, 12) as $k => $movie)
 	           			<div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
 	           				<div class="item">
 	           					<div class="pos-rlt">
-	           						<a href="{{ Helpers::url($movie['title'], $movie['id'], $movie['type']) }}"><img src="{{{ asset($movie['poster']) }}}" alt="{{ 'Poster of ' . $movie['title'] }}" class="r r-2x img-full"></a> <!-- Image -->
+	           						<a href="{{ Helpers::url($movie['title'], $movie['id'], $movie['type']) }}">
+	           							{{ HTML::image("$movie[poster]", "Poster of $movie[title]", array('class' => 'r r-2x img-full'))}}
+	           						</a> <!-- Image -->
 	           					</div> <!-- /.pos-rlt -->
 	           					<div class="padder-v">
 	           						<a href="{{ Helpers::url($movie['title'], $movie['id'], $movie['type']) }}">{{{ Helpers::shrtString($movie['title']) }}}</a>
@@ -66,7 +73,7 @@
 		           				<div class="item">
 		           					<div class="pos-rlt">
 		           						<a href="{{ Helpers::url($movie['title'], $movie['id'], $movie['type']) }}">
-							                <img src="{{{ asset($movie['poster']) }}}" class="r r-2x img-full" alt="{{ 'Poster of ' . $movie['title'] }}">
+							                {{ HTML::image($movie['poster'], 'Poster of '.$movie['title'], array('class'=>'r r-2x img-full')) }}
 							            </a> <!-- Image -->
 		           					</div> <!-- /.pos-rlt -->
 		           					<div class="padder-v">
@@ -91,7 +98,7 @@
 			                    <div class="item">
 			                      <div class="pos-rlt">
 			                        <a href="{{ Helpers::url($v['name'], $v['id'], 'people') }}">
-						                <img src="{{{ asset($v['image']) }}}" class="r r-2x img-full" alt="{{ 'Poster of ' . $v['name'] }}">
+						                {{ HTML::image($v['image'], 'Poster of '.$v['name'], array('class'=>'r r-2x img-full')) }}
 						            </a>
 			                      </div>
 			                      <div class="padder-v">
@@ -182,11 +189,11 @@
                                     <div class="pos-rlt">
                                         @if ($options->scrapeNewsFully())
                                             <a class="pull-left hidden-xs" href="{{{ Helpers::url($n->title, $n->id, 'news') }}}">
-                                                <img style="max-width:235px" class="media-object img-responsive" src="{{{ asset($n->image) }}}" alt="{{ 'Image of News Item' . $k }}">
+                                                {{ HTML::image($n->image, 'Image of News Item '.$k, array('class'=>'media-object img-responsive')) }}
                                             </a>
                                         @else
                                             <a class="pull-left hidden-xs" href="{{{ $n->full_url ? $n->full_url : Helpers::url($n->title, $n->id, 'news') }}}">
-                                                <img style="max-width:235px" class="media-object img-responsive" src="{{{ asset($n->image) }}}" alt="{{ 'Image of News Item' . $k }}">
+                                                {{ HTML::image($n->image, 'Image of News Item ' . $k, array('class'=>'media-object img-responsive')) }}
                                             </a>
                                         @endif
                                     </div>
@@ -378,5 +385,7 @@
 @stop
 
 @section('scripts')
-    <!-- {{ HTML::script('assets/js/scripts.js') }} -->
+
+	{{ HTML::script('assets/js/home-autocomplete.js') }}
+
 @stop

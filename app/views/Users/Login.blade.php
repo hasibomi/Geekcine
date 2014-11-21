@@ -12,15 +12,16 @@
   <link rel="stylesheet" href="{{asset('assets/css/simple-line-icons.css')}}" type="text/css" />
   <link rel="stylesheet" href="{{asset('assets/css/font.css')}}" type="text/css" />
   <link rel="stylesheet" href="{{asset('assets/css/app.css')}}" type="text/css" />  
+  <link rel="stylesheet" href="{{asset('assets/css/custom.css')}}" type="text/css" />
     <!--[if lt IE 9]>
     <script src="{{asset('assets/js/ie/html5shiv.js')}}"></script>
     <script src="{{asset('assets/js/ie/respond.min.js')}}"></script>
     <script src="{{asset('assets/js/ie/excanvas.js')}}"></script>
   <![endif]-->
 </head>
-<body class="bg-info dker">
+<body class="bg-info dker" id="loginBody">
   <div class="row"> @include('Partials.Response') </div>
-  <div class="col-md-5">
+  <div class="col-md-4" id="loginContainer">
     <section id="content" class="m-t-lg wrapper-md animated fadeInDown">
       <a class="navbar-brand block" href="javascript:;"><span class="h1 font-bold">Welcome to Geekcine</span></a>
       <div class="container aside-xl">
@@ -69,9 +70,6 @@
     <!-- / footer -->
   </div>
   <!-- /.col-md-5 -->
-  <div class="col-md-7">
-    <img src="{{ asset('assets/images/elysium.jpg') }}" alt="" width="800px" height="650px">
-  </div>
   <!-- /.col-md-7 -->
   <div class="col-sm-2"></div>
   <div class="push"></div>

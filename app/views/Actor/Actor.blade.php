@@ -55,7 +55,7 @@
                 
                                 @if (Helpers::hasAccess('people.edit'))
                 
-                                    <a href="{{ route(Str::slug(trans('main.people')) . '.edit', $actor['id']) }}" class="btn btn-info actor-edit-btn"><i class="fa fa-edit"></i> {{ trans('main.edit') }}</a>
+                                    <a href="{{ route(Str::slug(trans('main.people')) . '.edit', $actor['id']) }}" class="btn btn-info actor-edit-btn pull-right"><i class="fa fa-edit"></i> {{ trans('main.edit') }}</a>
                 
                                 @endif
                             
@@ -113,67 +113,78 @@
                             </section>
                             {{--person facts column ends--}}
                         </div>
-                		<div class="col-md-11">
-                            <div class="row actor-known-for">
+
+                        <div class="col-sm-2"></div>
+
+                		      <div class="col-md-9">
+
+                            <div class="panel pane-default" style="width: 104%; margin-left: -2%;">
+                              <div class="panel-heading">
+                                <div class="bordered-heading">
+                                  <span style="border-color:{{$options->getColor('warning')}};color:{{$options->getColor('warning')}}" class="text-border-top"><i class="fa fa-star"></i> {{ trans('main.known for') }}</span>
                     
-                              <div class="bordered-heading"><span style="border-color:{{$options->getColor('warning')}};color:{{$options->getColor('warning')}}" class="text-border-top"><i class="fa fa-star"></i> {{ trans('main.known for') }}</span>
-                    
-                                @if (Helpers::hasAccess('people.edit'))
+                                  @if (Helpers::hasAccess('people.edit'))
                                     <a href="{{ route('people.editFilmo', $actor['id']) }}" type="button"class="pull-right btn btn-info btn-xs"><i class="fa fa-edit"></i> {{trans('main.edit') }}</a>
-                                @endif
+                                  @endif
                     
+                                </div>
                               </div>
-                    
-                                @foreach ($actor['title'] as $v)
-                    
-                                    @if ($v['pivot']['known_for'])
-                    
-                                        <figure class="col-xs-3">
-                                            <a href="{{ Helpers::url($v['title'], $v['id'], $v['type']) }}">
-                                                <img src="{{{ asset($v['poster'] ? $v['poster'] : 'assets/images/cinema.png') }}}" alt="{{ 'Poster of ' . $v['title'] }}" class="img-responsive">
-                                            </a>
-                                        </figure>
-                    
-                                    @endif
-                    
-                                @endforeach
-                    
+                            </div>
+
+                            <div class="row actor-known-for">
+                              @foreach ($actor['title'] as $v)
+                  
+                                @if ($v['pivot']['known_for'])
+                
+                                    <figure class="col-xs-3">
+                                        <a href="{{ Helpers::url($v['title'], $v['id'], $v['type']) }}">
+                                            <img src="{{{ asset($v['poster'] ? $v['poster'] : 'assets/images/cinema.png') }}}" alt="{{ 'Poster of ' . $v['title'] }}" class="img-responsive">
+                                        </a>
+                                    </figure>
+                
+                                @endif
+                  
+                              @endforeach
                             </div>
                     
                             <br>
-    
-                            <div class="row actor-filmo">
-                    
-                                <div class="bordered-heading"><span style="border-color:{{$options->getColor('warning')}};color:{{$options->getColor('warning')}}" class="text-border-top"><i class="fa fa-star"></i> {{ trans('main.filmo') }}</span>
+
+                            <div class="panel panel-default" style="width: 104%; margin-left: -2%;">
+                              <div class="panel-heading">
+                                <div class="bordered-heading">
+                                  <span style="border-color:{{$options->getColor('warning')}};color:{{$options->getColor('warning')}}" class="text-border-top"><i class="fa fa-star"></i> {{ trans('main.filmo') }}</span>
                     
                                     @if (Helpers::hasAccess('people.edit'))
                     
-                                        <a href="{{ route('people.editFilmo', $actor['id']) }}" type="button"class="pull-right btn btn-info btn-xs"><i class="fa fa-edit"></i> {{ trans('main.edit') }}</a>
+                                      <a href="{{ route('people.editFilmo', $actor['id']) }}" type="button"class="pull-right btn btn-info btn-xs"><i class="fa fa-edit"></i> {{ trans('main.edit') }}</a>
                                     @endif
-                    
                                 </div>
+                              </div>
+                            </div>
+    
+                            <div class="row actor-filmo">
                     
-                                <table class="table table-condensed col-sm-12">
-                                    <tbody>		
-                    
-                                        @foreach ( Helpers::sortByYear($actor['title']) as $v)
-                    
-                                            <tr>
-                                                <td class="col-sm-1">
-                                                    {{{ $v['type'] == 'movie' ? trans('main.movie') : trans('main.series')}}}
-                                                </td>
-                                                <td class="col-sm-6">
-                                                    <a href="{{ Helpers::url($v['title'], $v['id'], $v['type']) }}">{{{ $v['title'] }}}</a>
-                                                </td>
-                                                <td class="col-sm-2">
-                                                    {{{ $v['release_date'] ? $v['release_date'] : $v['year']}}}
-                                                </td>
-                                            </tr>
-                                             
-                                        @endforeach
-                    
-                                    </tbody>
-                                </table>
+                              <table class="table table-condensed col-sm-12">
+                                <tbody>		
+                
+                                  @foreach ( Helpers::sortByYear($actor['title']) as $v)
+              
+                                    <tr>
+                                      <td class="col-sm-1">
+                                          {{{ $v['type'] == 'movie' ? trans('main.movie') : trans('main.series')}}}
+                                      </td>
+                                      <td class="col-sm-6">
+                                          <a href="{{ Helpers::url($v['title'], $v['id'], $v['type']) }}">{{{ $v['title'] }}}</a>
+                                      </td>
+                                      <td class="col-sm-2">
+                                          {{{ $v['release_date'] ? $v['release_date'] : $v['year']}}}
+                                      </td>
+                                    </tr>
+                                       
+                                  @endforeach
+                
+                                </tbody>
+                              </table>
                     
                             </div>
                          </div>
