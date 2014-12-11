@@ -11,23 +11,70 @@
   <link rel="stylesheet" href="{{asset('assets/css/font-awesome.min.css')}}" type="text/css" />
   <link rel="stylesheet" href="{{asset('assets/css/simple-line-icons.css')}}" type="text/css" />
   <link rel="stylesheet" href="{{asset('assets/css/font.css')}}" type="text/css" />
-  <link rel="stylesheet" href="{{asset('assets/css/app.css')}}" type="text/css" />  
-  <link rel="stylesheet" href="{{asset('assets/css/custom.css')}}" type="text/css" />
+  <link rel="stylesheet" href="{{asset('assets/css/app.css')}}" type="text/css" />
     <!--[if lt IE 9]>
     <script src="{{asset('assets/js/ie/html5shiv.js')}}"></script>
     <script src="{{asset('assets/js/ie/respond.min.js')}}"></script>
     <script src="{{asset('assets/js/ie/excanvas.js')}}"></script>
   <![endif]-->
+  <style>
+  .header-logo {
+    margin-top: -50px;
+    margin-left: -70px;
+    width: 140%;
+    text-align: center;
+  }
+  .logo-img {
+    background: #5a6a7a repeat-x;
+    background-size: 100%;
+    width: 100%;
+    height: 67px;
+  }
+  img {
+    margin-top: 5px;
+  }
+  #registerBody {
+      background: url({{{ asset('assets/images/' . $bg) }}}) no-repeat;
+      background-size: cover;
+      height: 100%;
+      width: 100%;
+      overflow-y: hidden;
+  }
+  #loginContainer {
+      background: #2da0b5;
+      overflow-x: hidden;
+      overflow-y: auto;
+      height: 100%;
+  }
+  @media (min-width: 100px) {
+      #registerBody {
+           background: url({{{ asset('assets/images/' . $bg) }}}) no-repeat;
+           background-size: cover;
+           height: 100%;
+           width: 100%;
+           overflow-y: hidden;
+      }
+  }
+  </style>
 </head>
 <body class="bg-info dker" id="registerBody">
-  <div class="row"> @include('Partials.Response') </div>
+
   <div class="col-md-4" id="loginContainer">
     <section id="content" class="m-t-lg wrapper-md animated fadeInDown">
-      <a class="navbar-brand block" href="/"><span class="h1 font-bold">Welcome to Geekcine</span></a>
       <div class="container aside-xl">
+
+        <div class="header-logo">
+          <div class="logo-img">
+            <a href="/">
+              {{ HTML::image('assets/images/logoo.png','') }}
+            </a>
+          </div>
+        </div>
         
         <section class="m-b-lg">
           <header class="wrapper text-center">
+            <a href="javascript:;"><span class="h2 font-bold">Welcome to Geekcine</span></a>
+            <br>
             <strong>Sign up to find interesting thing</strong>
           </header>
           {{ Form::open(array('action' => 'UserController@store')) }}
@@ -64,7 +111,7 @@
     <footer id="footer">
       <div class="text-center padder clearfix" style="margin-top: -6%;">
         <p>
-          <small>&copy; 1999 - 2014 Geekcine, Inc. All Rights Reserved</small>
+          <small>&copy; 1999 - {{ date('Y') }} Geekcine, Inc. All Rights Reserved</small>
         </p>
       </div>
       <p>
@@ -77,8 +124,10 @@
     </footer>
     <!-- / footer -->
   </div>
-  <!-- /.col-md-5 -->
-  <div class="col-sm-2"></div>
+  <!-- /.col-md-4 -->
+  <div class="col-md-8">
+    <div class="row"> @include('Partials.Response') </div>
+  </div>
   <div class="push"></div>
   <div class="clearfix"></div>
 

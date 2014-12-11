@@ -53,9 +53,11 @@
 <body class="body">
 <div class="modal-over">
   <div class="modal-center animated fadeInUp text-center" style="width:200px;margin:-80px 0 0 -100px;">
+      
     <div class="thumb-md"><img src="{{ $user->first()->avatar ? asset($user->first()->avatar) : asset('assets/images/no_user_icon_big.jpg')}}" class="img-circle b-a b-light b-3x"></div>
+
     <p class="text-white h4 m-t m-b">{{ $user->first()->first_name . ' ' . $user->first()->last_name }}</p>
-    {{ Form::open(array('action' => 'SessionController@store')) }}
+    {{ Form::open(array('url' => '/log-out')) }}
         {{ Form::hidden('username', Sentry::getUser()->username) }}
 
         <div class="row">
@@ -67,13 +69,14 @@
                 <button class="btn btn-success btn-rounded" type="submit" data-dismiss="modal"><i class="fa fa-arrow-right"></i></button>
             </span>
         </div>
+        
       <div class="row">
         {{ $errors->first('password', '<span class="help-block alert alert-danger">:message</span>') }}
       </div>
     {{ Form::close() }}
     <p class="text-white m-t m-b"><a href="/" class="text-white"><i class="fa fa-arrow-left"></i> Goto Homepage</a></p>
     <?php
-    Sentry::logout();
+    Sentry::check() ? Sentry::logout() : Redirect::to('/');
     ?>
   </div>
 </div>

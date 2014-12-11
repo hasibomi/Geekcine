@@ -6,13 +6,15 @@
 
 @section('content')
 
-    <div class="container push-footer-wrapper">
-
-    	{{ trans('tos.tos') }}
-
-	<div class="push"></div>
-    </div>
-
+    <section class="hbox stretch">
+		<section>
+			<section class="vbox">
+				<section class="scrollable padder-lg" id="bjax-target">
+					{{ trans('tos.tos') }}
+				</section>
+			</section>
+		</section>
+	</section>
 @stop
 
 

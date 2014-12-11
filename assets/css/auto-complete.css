@@ -1,0 +1,31 @@
+.navbar-form .input-group > .auto-complete-search-box {
+	width: 400px;
+}
+
+.auto-complete {
+	display: block;
+	margin-top: 30px;
+	padding: 0;
+	list-style: none;
+	border: 1px solid #CCCCCC;
+	border-bottom: none;
+	position: absolute;
+	background: #fff;
+	width: 399px;
+	border-radius: 3px;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.auto-complete li a {
+	display: block;
+	padding: 5px;
+	border-bottom: 1px solid #CCCCCC;
+	width: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.auto-complete li a:hover {
+	background: #C1C1C1;
+}

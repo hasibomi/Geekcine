@@ -5,21 +5,17 @@
 
       @unless($v->title == $data->getTitle())
 
-        <figure class="col-sm-3">
-
-          <div class="img-container">
+        <div class="col-sm-4">
             
-            <a href="{{ Helpers::url($v->title, $v->id, $v->type) }}">
-              <img src="{{{ $v->poster ? asset($v->poster) : asset('assets/images/imdbnoimage.jpg') }}}" class="img-responsive" alt="{{ 'Picture of ' . $v->title }}">
-            </a>         
-            
-            <figcaption>
-              <a href="{{ Helpers::url($v->title, $v->id, $v->type) }}">{{ Helpers::shrtString($v->title, 25) }}</a>
-            </figcaption>
+          <a href="{{ Helpers::url($v->title, $v->id, $v->type) }}">
+            <img src="{{{ $v->poster ? asset($v->poster) : asset('assets/images/imdbnoimage.jpg') }}}" class="img-responsive" alt="{{ 'Picture of ' . $v->title }}">
+          </a>         
+          
+          <figcaption>
+            <a href="{{ Helpers::url($v->title, $v->id, $v->type) }}">{{ Helpers::shrtString($v->title, 25) }}</a>
+          </figcaption>
 
-          </div>
-
-        </figure>
+        </div>
 
       @endunless 
 
@@ -29,6 +25,6 @@
 
 @else
 
-<div><h3 class="reviews-not-released"><i class="fa fa-exclamation-circle"></i> {{ trans('main.no similar movies')}}</h3></div>
+<div style="width: 90%; margin: auto;"><h3 class="reviews-not-released"><i class="fa fa-exclamation-circle"></i> {{ trans('main.no similar movies')}}</h3></div>
 
 @endif

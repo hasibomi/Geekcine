@@ -6,6 +6,8 @@
   
   <p class="pull-left">{{ trans('main.your rating') }}:</p>
 
+  <br>
+
   <div id="rating" class="pull-left"></div>
   <div class="current pull-left"></div>
   

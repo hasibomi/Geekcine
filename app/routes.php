@@ -16,6 +16,45 @@ Route::get(Str::slug(trans('main.search')), 'SearchController@byQuery');
 Route::get('typeahead/{query}', array('uses' => 'SearchController@typeAhead', 'as'   => 'typeahead'));
 Route::get('typeahead-actor/{query}', array('uses' => 'SearchController@castTypeAhead', 'as'   => 'typeahead-cast'));
 
+//auto complete
+Route::get('/autocomplete', function() {
+	if (Request::ajax())
+	{
+		$input = Input::get('input');
+		
+		$title = Title::where('title', 'LIKE', e($input).'%')->take(5)->get();
+		
+		$list = '<ul class="auto-complete">';
+		
+		if (count($title) > 0)
+		{
+			foreach ($title as $row1)
+			{
+				$list.= '<li><a href="'.Helpers::url($row1->title, $row1->id, $row1->type).'">'.'<div class="row"><div class="col-md-3"><img src="'.asset($row1->poster).'" class="img-responsive"></div><div class="col-md-9"><b>'.$row1->title.'</b><br>'.substr($row1->plot, 0, 70).' ...</div></div></a></li>';
+			}
+		}
+		
+		$people = Actor::where('name', 'LIKE', e($input).'%')->take(5)->get();
+		
+		if (count($people) > 0)
+		{
+			foreach ($people as $row2)
+			{
+				$list.= '<li><a href="'.Helpers::url($row2->name, $row2->id, 'people').'">'.'<div class="row"><div class="col-md-3"><img src="'.asset($row2->image).'" class="img-responsive"></div><div class="col-md-9">'.$row2->name.'</div></div></a></li>';
+			}
+		}
+		
+		if (count($title) == 0 && count($people) == 0)
+		{
+			$list.= "<li>No result found</li>";
+		}
+		
+		$list.= '</ul>';
+		
+		echo $list;
+	}
+});
+
 //homepage and footer
 Route::get('/', array('uses' => 'HomeController@index', 'as' => 'home'));
 Route::get(Str::slug(trans('main.privacyUrl')), array('uses' => 'HomeController@privacy', 'as' => 'privacy'));
@@ -164,5 +203,7 @@ Route::get('/app/install/{key?}',  array('as' => 'install', function($key = null
   }
 }
 ));
+
+Route::post('/log-out', array('as'=>'log-out','uses'=>'SessionController@log_out'));
 
 

@@ -33,8 +33,6 @@
             {{ Form::hidden('title_id', $data->getId()) }}
 
             {{ Form::textarea('body', Input::old('body'), array('rows' => 15, 'class' => 'form-control')) }}
-            
-            <br>
           
         </section>
 
@@ -45,7 +43,7 @@
           <button type="button" class="btn btn-danger" data-dismiss="modal">{{ trans('main.close') }}</button>
 
             @if (Sentry::check())
-              <button type="submit" class="btn btn-success pull-right">{{ trans('main.publish') }}</button>
+              <button type="submit" class="btn btn-success pull-left">{{ trans('main.publish') }}</button>
             @else
               <a class="btn btn-success pull-right" href="{{ url('login') }}">{{ trans('main.login') }}</a>
             @endif

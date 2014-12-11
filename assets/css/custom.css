@@ -1,19 +1,2 @@
-﻿#registerBody {
-    background: url(../images/elysium.jpg) no-repeat;
-    background-size: 100%;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-}
-#loginBody {
-    background: url(../images/login_img.png) no-repeat;
-    background-size: 100%;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-}
-#loginContainer {
-    background: #2da0b5;
-    overflow: hidden;
-    height: 100%;
-}
+﻿
+

@@ -13,9 +13,7 @@
 
     }
 </style>
-<section class="row">
-
-    <div class="col-sm-10">
+    <div class="col-sm-12">
         <h3 class="row" style="margin-top: 0px;">Watch {{ $data->getTitle() }}</h3>
         <hr style="margin-top: 0px;">
         
@@ -169,7 +167,3 @@
     </div>
     @endif
 </div>
-
-
-
-</section>

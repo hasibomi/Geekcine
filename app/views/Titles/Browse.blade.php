@@ -53,7 +53,7 @@
                                             @include('Partials.AddToListButtons')
                                             
                                         </div> <!-- /.item-overlay.opacity.r.r-2x.bg-black -->
-                                        <a href="{{Helpers::url($r['title'], $r['id'], $r['type'])}}"><img src="{{str_replace('w185', 'w342', $r->poster) }}" alt="{{{ $r['title'] }}}" class="r r-2x img-full" title="{{{ $r->title }}}"></a> <!-- Image -->
+                                        <a href="{{Helpers::url($r['title'], $r['id'], $r['type'])}}"><img src="{{str_replace('w185', 'w342', $r->poster) }}" alt="{{{ $r['title'] }}}" class="r r-2x img-full" title="{{{ $r->title }}}" width='100' height='250'></a> <!-- Image -->
                                     </div> <!-- /.pos-rlt -->
                                     <div class="padder-v">
                                         <a href="{{Helpers::url($r['title'], $r['id'], $r['type'])}}">{{  Helpers::shrtString($r['title']) }}</a>

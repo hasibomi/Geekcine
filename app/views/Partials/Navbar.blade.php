@@ -7,35 +7,28 @@
         <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">
           Discover
         </li>
-        @if(Helpers::hasAccess('super'))
-            @if (isset($options->options['logo']) && Str::length($options->options['logo']) > 4)
-                <li><a href="{{ url('dashboard') }}">{{ trans('dash.dash') }}</a></li>
-            @else
-                <li><a href="{{ url('dashboard') }}">{{ trans('main.dashboard') }}</a></li>
-            @endif
-        @endif
         <li>
-          <a href="/movies">
+          <a href="{{ url(Str::slug(trans('main.movies'))) }}">
             <i class="icon-film icon text-primary"></i>
-            <span class="font-bold">Movie</span>
+            <span class="font-bold">{{ trans('main.movies-menu') }}</span>
           </a>
         </li>
         <li>
-          <a href="/series">
+          <a href="{{ url(Str::slug(trans('main.series'))) }}">
             <i class="icon-screen-desktop icon text-info"></i>
-            <span class="font-bold">Series</span>
+            <span class="font-bold">{{ trans('main.series-menu') }}</span>
           </a>
         </li>
         <li>
-          <a href="/news">
+          <a href="{{ url(Str::slug(trans('main.news'))) }}">
             <i class="icon-drawer icon text-primary-lter"></i>
-            <span class="font-bold">News</span>
+            <span class="font-bold">{{ trans('main.news-menu') }}</span>
           </a>
         </li>
         <li>
-          <a href="/people">
-            <i class="icon-list icon  text-success-dker"></i>
-            <span class="font-bold">People</span>
+          <a href="{{ url(Str::slug(trans('main.people'))) }}">
+            <i class="fa fa-star text-success-dker"></i>
+            <span class="font-bold">{{ trans('main.people-menu') }}</span>
           </a>
         </li>
         <li class="m-b hidden-nav-xs"></li>
@@ -60,22 +53,33 @@
               <a href="{{ Helpers::profileUrl() }}" class="auto">                                                        
                 <i class="fa fa-angle-right text-xs"></i>
 
-                <span>Profile</span>
+                <span>{{ trans('users.profile') }}</span>
               </a>
             </li>
             @endif
             <li >
-              <a href="blog" class="auto">                                                        
+              <a href="disclaimer" class="auto">                                                        
                 <i class="fa fa-angle-right text-xs"></i>
 
                 <span>Timeline</span>
               </a>
             </li>
             <li >
-              <a href="invoice" class="auto">                                                        
+              <a href="privacy" class="auto">                                                        
                 <i class="fa fa-angle-right text-xs"></i>
-
                 <span>Privacy Policy</span>
+              </a>
+            </li>
+            <li>
+              <a href="tos" class="auto">
+                <i class="fa fa-angle-right text-xs"></i>
+                <span>Terms Of Service</span>
+              </a>
+            </li>
+            <li>
+              <a href="contact" class="auto">
+                <i class="fa fa-angle-right text-xs"></i>
+                <span>Contact Us</span>
               </a>
             </li>
           </ul>

@@ -77,9 +77,9 @@ class SessionController extends BaseController {
 		$input = Input::except('_token');
 		if ( ! isset($input['remember'])) $input['remember'] = false;	
 
-		if ( ! $this->validator->with($input)->passes())
+		if ( ! $this->validator->with($input)->passes() )
 		{
-			return Redirect::back()->withErrors($this->validator->errors())->withInput($input);
+			return Redirect::back()->withErrors($this->validator->errors())->withInput($input)->with('user',$input['username']);
 		}
 
 		try
@@ -112,7 +112,7 @@ class SessionController extends BaseController {
 
 		if ( ! empty($messages) )
 		{
-			return Redirect::back()->withInput()->withErrors($messages);
+			return Redirect::back()->withInput()->withErrors($messages)->with('user', $input['username']);
 		}
 
 		return Redirect::intended();
@@ -205,10 +205,87 @@ class SessionController extends BaseController {
         {
             return Redirect::to('/');
         }
+        
+       /* if (User::where('username', '=', Session::get('user')))
+        {
+            $query = User::where('username', '=', Session::get('user'));
+            
+            return View::make('Main.Logout')->with('user', $query);
+        }
+        
+        $query = User::where('username', '=', Sentry::getUser()->username);;
+
+        return View::make('Main.Logout')->with('user', $query);*/
+
+        //$query = User::where('username', '=', Sentry::getUser()->username)->orWhere('username', '=', Session::get('user'));
+        
+        $query = User::where('username', '=', Sentry::getUser()->username);
+
+        return View::make('Main.Logout')->with('user', $query);
+        
+        //echo Session::get('user');
+        
+        //echo $errors->all();
 
 		//return Redirect::to('/');
-        $query = User::where('username', Sentry::getUser()->username);
-        return View::make('Main.Logout')->with('user', $query);
+        /*if ( $query = User::where('username', Sentry::getUser()->username) )
+        {
+        	return View::make('Main.Logout')->with('user', $query);
+        }
+        else
+        {
+        	return View::make('Main.Logout');
+        }*/
+        //return View::make('Main.Logout');
 	}
+    
+    public function log_out()
+    {
+        $input = Input::except('_token');
+		if ( ! isset($input['remember'])) $input['remember'] = false;	
+
+		if ( ! $this->validator->with($input)->passes() )
+		{
+			//return Redirect::to('/logout')->withErrors($this->validator->errors())->withInput($input)->with('user',$input['username']);
+            
+            return View::make('Main.Logout2', array('users'=>$input['username']));
+		}
+
+		try
+		{
+			$credentials = array('username' => $input['username'], 'password' => $input['password']);
+
+			Sentry::authenticate($credentials, $input['remember']);
+		}
+
+		catch (Cartalyst\Sentry\Users\WrongPasswordException $e)
+		{
+		    $messages = array('username' => 'Username and password do not match.');
+		}
+		catch (Cartalyst\Sentry\Users\UserNotFoundException $e)
+		{		    
+		    $messages = array('username' => 'Username and password do not match.');
+		}
+		catch (Cartalyst\Sentry\Users\UserNotActivatedException $e)
+		{
+		    $messages = array('username' => 'This user is not activated.');
+		}
+		catch (Cartalyst\Sentry\Throttling\UserSuspendedException $e)
+		{
+		   $messages = array('username' => 'This user is suspended.');
+		}
+		catch (Cartalyst\Sentry\Throttling\UserBannedException $e)
+		{
+		    $messages = array('username' => 'This user is banned');
+		}
+
+		if ( ! empty($messages) )
+		{
+			//return Redirect::to('/logout')->withInput()->withErrors($messages)->with('user', $input['username']);
+            return View::make('Main.Logout2')->withErrors($this->validator->errors())->withInput($input)->with('users', $input['username']);
+		}
+
+		return Redirect::intended();
+    }
 
 }

@@ -63,8 +63,8 @@
 
               <div class="modal-footer">
                 <div class="col-sm-2 pull-left" id="ajax-loading">
-                  <img src="{{{ asset('assets/images/ajax_loader.gif') }}}" alt="Ajax loading image" class="img-responsive">
-                  <div class="row" id="ajax-loading-text">{{ trans('main.wait')}} </div>
+                  {{--<img src="{{{ asset('assets/images/ajax_loader.gif') }}}" alt="Ajax loading image" class="img-responsive">--}}
+                  {{--<div class="row" id="ajax-loading-text">{{ trans('main.wait')}} </div>--}}
                 </div>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 {{ Form::submit('Confirm', array('class' => 'btn btn-success')) }}

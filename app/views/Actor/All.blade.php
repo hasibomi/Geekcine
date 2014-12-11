@@ -29,11 +29,11 @@
                           <div class="col-md-12">
                             <div class="row row-sm">
                                 @foreach($actors as $k => $v)
-                                    <div class="col-xs-6 col-sm-3">
+                                    <div class="col-xs-6 col-sm-2">
                                         <div class="item">
                                           <div class="pos-rlt">
                                             <a href="{{ Helpers::url($v['name'], $v['id'], 'people') }}">
-                                                <img src="{{{ asset($v['image']) }}}" class="r r-2x img-full" alt="{{ 'Poster of ' . $v['name'] }}">
+                                                <img src="{{{ asset($v['image']) }}}" class="r r-2x img-full" alt="{{ 'Poster of ' . $v['name'] }}" width="100" height="250">
                                             </a>
                                           </div>
                                           <div class="padder-v">

@@ -12,8 +12,10 @@
                 </div>
               </div>
               <div class="h4 m-t m-b-xs" style="color: #fff;">{{ $user->first_name && $user->last_name ? $user->first_name . ' ' . $user->last_name : $user->username }}</div>
-              <small class="text-muted m-b" style="color: #fff;">Art director</small>
-            </div>                      
+              <small class="text-muted m-b" style="color: #fff;">
+                  <i class="fa fa-map-marker"></i> {{ $user->address }} - {{ date('Y') - $user->year }} years old
+              </small>
+            </div>
           </div>
         </div>
       </section>
@@ -39,11 +41,12 @@
           </div>
         </div>
       </footer>
+      	<br>
         <div class="btn-group btn-group-justified m-b">
           @if($friendship == NULL)
           	@if(!Helpers::isUser($user->username))
               <a href='{{url("/users/friends/send/$user->id")}}' class="btn btn-success btn-rounded">
-                  <span class="text-active">
+                  <span class="text">
                     <i class="fa fa-user"></i> Add friend
                   </span>
               </a>
@@ -52,7 +55,7 @@
           	@if($friendship->status == 0)
             	@if($friendship->first_user != $user->id)
               	<a class="btn btn-success btn-rounded">
-                  <span class="text-active">
+                  <span class="text">
                     <i class="fa fa-user"></i> Request sent
                   </span>
                 </a>
@@ -63,12 +66,17 @@
                   
             @elseif($friendship->status > 1)
             	<a href='{{url("/users/friends/send/$user->id")}}' class="btn btn-success btn-rounded">
-                <span class="text-active">
-                  <i class="fa fa-user"></i> Add friend
-                </span>
-              </a>
+                    <span class="text">
+                      <i class="fa fa-user"></i> Add friend
+                    </span>
+                </a>
             @endif
           @endif
+          <a href='#' class="btn btn-info btn-rounded">
+                <span class="text">
+                  <i class="icon icon-envelope"></i> &nbsp;Send message
+                </span>
+           </a>
         </div>
         <div style="margin-left: 5%;">
           <small class="h3 font-thin">About me</small>
@@ -93,6 +101,25 @@
           <div class="row">
             <div class="col-md-6">{{ trans('main.titles watchlisted') }}</div>
             <div class="col-md-6">{{ $watCount }}</div>
+          </div>
+
+          <br>
+
+          <small class="h3 font-thin">Info</small>
+
+          <div class="row">
+          	<div class="col-md-12">
+          		@if (strlen($user->information) > 100)
+          			<p id="less">{{ substr($user->information, 0, 100) }}</p>
+          			<p>
+          				<a href="javascript:;" id="moreInfo" style="color: blue;">More</a>
+          			</p>
+          			<p id="more" style="display: none;">{{ $user->information }}</p>
+          			<p><a href="javascript:;" id="lessInfo" style="display: none;color: blue;">Less</a></p>
+          		@elseif (strlen($user->information) <= 100)
+          			{{ $user->information }}
+          		@endif
+          	</div>
           </div>
         </div>
     </section>

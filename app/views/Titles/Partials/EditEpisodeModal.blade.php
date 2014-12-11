@@ -1,4 +1,4 @@
-<button title="{{ trans('dash.edit') }}" data-toggle="modal" data-target='#{{ "modal{$v->id}" }}' class="btn btn-warning"><i class="fa fa-edit"></i>{{ trans('main.edit ep') }}</button>
+<button title="{{ trans('dash.edit') }}" data-toggle="modal" data-target='#{{ "modal{$v->id}" }}' class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>{{ trans('main.edit ep') }}</button>
 
 <div class="modal animated bounce edit-season-modal" id='{{ "modal{$v->id}" }}' tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
     <div class="modal-dialog">
@@ -53,8 +53,8 @@
 
           <div class="modal-footer">
             <div class="col-sm-2 pull-left" id="ajax-loading">
-              <img src="{{{ asset('assets/images/ajax_loader.gif') }}}" alt="Ajax loading image" class="img-responsive">
-              <div class="row" id="ajax-loading-text">{{ trans('main.wait')}} </div>
+              {{--<img src="{{{ asset('assets/images/ajax_loader.gif') }}}" alt="Ajax loading image" class="img-responsive">--}}
+              {{--<div class="row" id="ajax-loading-text">{{ trans('main.wait')}} </div>--}}
             </div>
             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
             {{ Form::submit('Confirm', array('class' => 'btn btn-success')) }}

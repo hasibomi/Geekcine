@@ -1,85 +1,58 @@
 @if ( ! $data->getSeasons($num)->episode->isEmpty())
 
-@foreach($data->getSeasons($num)->episode as $k => $v)
-    <div class="media col-sm-12">
-        <div class="pull-left col-sm-3">
-            <img src="{{{ $v->poster ? asset($v->poster) : asset($data->getPoster()) }}}" alt="{{ 'Poster of ' . $v->title }}" class="media-object img-responsive thumb">
+    @if (Helpers::hasAccess('titles.create'))
+        <div class="row">
+            <div class="col-md-4"></div>
+            <a class="btn btn-primary pull-left" style="margin-left: 5%" href='{{ url("series/" . $data->getId() . "/seasons/$num/episodes/create") }}'>{{ trans('main.create new epi') }}</a>
         </div>
-    
-        <div class="media-body col-sm-9">
-            <h4 class="media-heading">{{ trans('main.episode') }} {{{ $v->episode_number }}} - {{ $v->title }}</h4>
-            <p>{{ $v->plot }}</p>
-            @if ($v->promo)
+        <br>
+    @endif
 
-                <button class="promo-trigger btn btn-warning" data-trailer="{{ $v['promo'] }}" data-toggle="modal">
-                  <i class="fa fa-play"></i> {{ trans('main.watch promo') }}
-                </button>
-
-                <div id="promo-modal-box"></div>
-            @endif
-
-            <p>
-                @if (Helpers::hasAccess('titles.delete'))
-                    {{ Form::open(array('url' => Str::slug(trans('main.series')) . '/' . $data->getId() . "/seasons/$num/episodes/{$v->id}", 'method' => 'delete', 'class' => 'delete-form')) }}
-                        <button type="submit" title="{{ trans('main.delete') }}" class="btn btn-danger-drk"><i class="fa fa-trash-o"></i> {{ trans('main.delete ep') }}</button>
-                    {{ Form::close() }}
-                @endif
-                @if (Helpers::hasAccess('titles.edit'))
-                    @include('Titles.Partials.EditEpisodeModal')
-                @endif
-
-                @if(Sentry::check())
-                <button type="button" class="btn btn-warning btn-add-episode-link" data-title_id="{{$v->title_id}}" data-episode_id="{{$v->id}}"
-                    data-episode_number="{{$v->episode_number}}" data-season_number="{{$num}}">
-                    <i class="fa fa-plus-square"></i>{{trans('main.add link')}}
-                </button>
-                @endif
-            </p>
+@foreach($data->getSeasons($num)->episode as $k => $v)
+    <div class="row">
+        <div class="media col-sm-12">
+            <div class="col-sm-5">
+                <img src="{{{ $v->poster ? asset($v->poster) : asset($data->getPoster()) }}}" alt="{{ 'Poster of ' . $v->title }}" class="media-object img-responsive">
+                <span class="row grey-out">{{ trans('main.release date') }}: {{{ $v->release_date }}} </span>
+            </div>
         
-            <span class="row grey-out">{{ trans('main.release date') }}: {{{ $v->release_date }}} </span>
+            <div class="media-body col-sm-7">
+                <span class="h3">{{ trans('main.episode') }} {{{ $v->episode_number }}} - {{ $v->title }}</span>
+                
+                @if ($v->promo)
 
-            <!-- Episode Link -->
-            @foreach($v->links as $index => $links)
-                <div class="row" >
-                    <div class="col-sm-2">
-                        <img src="{{url(str_replace('.png','_big.png',$languages[$index]->icon))}}" data-title="{{$languages[$index]->name}}" />
-                    </div>
-                    <div class="col-sm-10">
-                        <div class="row" >
-                            <div class="col-sm-1"></div>
-                            @foreach($links as $key => $link)
-                            @if($key!=0 && ($key%10==0))
-                            <div class="col-sm-1"></div></div><div class="row" style="padding-top: 15px; "><div class="col-sm-1"></div>    
-                            @endif
-                            <?php
-                            $user = $link->user;
-                            $userpage = url('/users') . '/' . $user->id . '-' . $user->username;
-                            $quality = ($link->quality? $link->quality : 'dvd');
-                            ?>
-                            <div class="col-sm-1" style="position:relative; margin-right: 10px;">
-                                <a class="btn btn-default episode-link" data-id="{{$link->id}}" data-username="{{$user->username}}" data-userpage="{{$userpage}}"
-                                   data-episode-number="{{$link->episode_number}}" data-link-number="{{$key + 1}}"
-                                   href="javascript:void(0)">
-                                    <img src="http://www.google.com/s2/favicons?domain={{ $link->url}}" style="background-color: #efefef; margin:5px;">
-                                    <br>
-                                    {{$key + 1}}
-                                </a>                
-                                <span class="badge" style="position:absolute; top:-8px; left:42px; background-color:transparent;"><img src="{{url('assets/images/icon_'.$quality.'.png')}}" width="30"></span>
-                            </div>
-                            @endforeach
-                            <div class="col-sm-1"></div>
-                        </div>
-                    </div>
-                </div>
+                    <button class="promo-trigger btn btn-warning" data-trailer="{{ $v['promo'] }}" data-toggle="modal">
+                      <i class="fa fa-play"></i> {{ trans('main.watch promo') }}
+                    </button>
 
-            @if($index!=1)  
-            <hr>
-            @endif
+                    <div id="promo-modal-box"></div>
+                @endif
 
-            @endforeach
+                <p>
+                    @if (Helpers::hasAccess('titles.delete'))
+                        {{ Form::open(array('url' => Str::slug(trans('main.series')) . '/' . $data->getId() . "/seasons/$num/episodes/{$v->id}", 'method' => 'delete', 'class' => 'delete-form', 'style' => 'float: left')) }}
+                            <button style="float: left;" type="submit" title="{{ trans('main.delete') }}" class="btn btn-info btn-sm"><i class="fa fa-trash-o"></i> {{ trans('main.delete ep') }}</button>
+                        {{ Form::close() }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    @endif
+                     @if (Helpers::hasAccess('titles.edit'))
+                        @include('Titles.Partials.EditEpisodeModal')
+                    @endif
+                </p>
 
-        </div>{{--media-body--}}
-    </div>{{--media--}}
+                <p>
+                    @if(Sentry::check())
+                    <button type="button" class="btn btn-warning btn-add-episode-link btn-sm" data-title_id="{{$v->title_id}}" data-episode_id="{{$v->id}}"
+                        data-episode_number="{{$v->episode_number}}" data-season_number="{{$num}}">
+                        <i class="fa fa-plus-square"></i>{{trans('main.add link')}}
+                    </button>
+                    @endif
+                </p>
+                <br>
+                <p>{{ $v->plot }}</p>
+            </div>{{--media-body--}}
+
+        </div>{{--media--}}
+    </div>
     <hr>
 @endforeach
 

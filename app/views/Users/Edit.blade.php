@@ -86,6 +86,74 @@
           {{ $errors->first('gender', '<span class="help-block alert alert-danger">:message</span>') }}
         </div>
 
+        <div class="form-group">
+            
+            <div class="row"> {{ Form::label('birthday', 'Birthday') }} </div>
+            
+            <div class="row">
+                <div class="col-md-2">
+                    {{  Form::select('month', array('--Month--' => '--Month--', 'January' => 'January', 'February' => 'February', 'March'=>'March','April'=>'April','May'=>'May','June'=>'June','July'=>'July','August'=>'August','September'=>'September','October'=>'October','November'=>'November','December'=>'December'), $user->month, array('class' => 'form-control')) }}
+                </div>
+                <div class="col-md-2">
+                    <select class="form-control" name="day">
+
+                        @if ($user->day != 0)
+                            <option>{{ $user->day }}</option>
+                            <option>--Day--</option>
+
+                            @for ($d=01;$d<=31;$d++)
+                                <option>{{ $d }}</option>
+                            @endfor
+                        @else
+                            <option>--Day--</option>
+
+                            @for ($d=01;$d<=31;$d++)
+                                <option>{{ $d }}</option>
+                            @endfor
+                        @endif
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <select class="form-control" name="year">
+
+                        @if ($user->year != 0)
+                            <option>{{ $user->year }}</option>
+                            <option>--Year--</option>
+
+                            @for ($y=1930;$y<=date('Y');$y++)
+                                <option>{{ $y }}</option>
+                            @endfor
+                        @else
+                            <option>--Year--</option>
+
+                            @for ($y=1930;$y<=date('Y');$y++)
+                                <option>{{ $y }}</option>
+                            @endfor
+                        @endif
+                    </select>
+                </div>
+            </div>
+          	
+        </div>
+      
+        <div class="form-group">
+            {{ $errors->first('month', '<span class="help-block alert alert-danger">:message</span>') }}
+            {{ $errors->first('day', '<span class="help-block alert alert-danger">:message</span>') }}
+            {{ $errors->first('year', '<span class="help-block alert alert-danger">:message</span>') }}
+        </div>
+
+        <div class="form-group">
+			{{ Form::label('address', 'Address') }}
+          	{{  Form::textarea('address', Input::old('address'), array('class' => 'form-control')) }}
+          	{{ $errors->first('address', '<span class="help-block alert alert-danger">:message</span>') }}
+        </div>
+
+        <div class="form-group">
+			{{ Form::label('information', 'Info') }}
+          	{{  Form::textarea('information', Input::old('information'), array('class' => 'form-control')) }}
+          	{{ $errors->first('information', '<span class="help-block alert alert-danger">:message</span>') }}
+        </div>
+
        
 
           <a type="button" href="{{ Helpers::url($user->username, $user->id, 'users') }}" class="btn btn-warning">

@@ -5,7 +5,7 @@
             <div class="row row-sm">
                 @foreach($data->getCast() as $k => $actor)
                 
-                <div class="col-sm-6 col-md-3 col-lg-3" data-order="{{{ $k }}}">
+                <div class="col-lg-4" data-order="{{{ $k }}}">
                     <div class="item">
                         <div class="pos-rlt">
                             <a href="{{ Helpers::url($actor['name'], $actor['id'], 'people') }}">
@@ -14,7 +14,7 @@
                         <div class="padder-v">
                             <a href="{{ Helpers::url($actor['name'], $actor['id'], 'people') }}">{{{ $actor['name'] }}}</a> <br>
 
-                          {{{ $actor['pivot']['char_name'] }}}
+                            {{{ $actor['pivot']['char_name'] }}}
                         </div>
                     </div>
                 </div>
