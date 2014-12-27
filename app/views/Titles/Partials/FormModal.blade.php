@@ -37,9 +37,9 @@
         </section>
 
         <div class="modal-footer">
-          <div class="col-sm-1 pull-left" id="ajax-loading">
+<!--          <div class="col-sm-1 pull-left" id="ajax-loading">
             <img src="{{{ asset('assets/images/ajax_loader.gif') }}}" alt="Ajax loading image" class="img-responsive">
-          </div>
+          </div>-->
           <button type="button" class="btn btn-danger" data-dismiss="modal">{{ trans('main.close') }}</button>
 
             @if (Sentry::check())

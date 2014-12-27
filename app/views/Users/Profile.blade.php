@@ -33,15 +33,15 @@
 
                   @include('Partials.FilterBar', array('action' => Helpers::url($user->username, $user->id, 'users') . '/' .Request::segment(3)))
 
-                  <div class="row row-sm" style="width: 98%; margin: auto;">
+                  <div class="row row-sm" style="width: 98%; margin: auto;" id="grid">
 
                     @foreach (Request::segment(3) == 'favorites' ? $favorite : $watchlist as $w)
 	
-  					         <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3" data-filter-class="{{ Helpers::genreFilter($w['genre']) }}" data-popularity="{{{ $w['imdb_votes_num'] }}}" data-name="{{{ $w['title'] }}}" data-release="{{{ $w['year'] }}}" style="float: left;">
+  			<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3" data-filter-class="{{ Helpers::genreFilter($w['genre']) }}" data-popularity="{{ $w['mc_num_of_votes'] ? $w['mc_num_of_votes'] : ($w['imdb_votes_num'] ? $w['imdb_votes_num'] : $w['tmdb_popularity'])}}" data-name="{{{ $w['title'] }}}" data-release="{{{ $w['year'] }}}" style="float: left;">
                         <div class="item">
                           <div class="pos-rlt">
                               <a href="{{Helpers::url($w['title'], $w['id'], $w['type'])}}">
-                                <img class ="r r-2x img-full" src="{{{ $w['poster'] ? asset($w['poster']) : asset('assets/images/imdbnoimage.jpg') }}}" alt="{{{ $w['title'] }}}" width="60" height="200">
+                                <img class ="r r-2x img-full" src="{{{ $w['poster'] ? asset($w['poster']) : asset('assets/images/imdbnoimage.jpg') }}}" alt="{{{ $w['title'] }}}" width="60" height="300">
                               </a> <!-- Image -->
                           </div> <!-- /.pos-rlt -->
                           <div class="padder-v">
@@ -90,14 +90,48 @@
 			$('#more').show();
 			$('#lessInfo').show();
 			$('#moreInfo').hide();
-		})
+		});
 
 		$('#lessInfo').click(function() {
 			$('#less').show();
 			$('#more').hide();
 			$('#moreInfo').show();
 			$('#lessInfo').hide();
-		})
+		});
+		
+		$(".btn-sort").click(function() {
+			var $mylist = $('#grid'),
+				$btn = $(this);
+
+			if($btn.attr("data-group") === "popularity" && ! $btn.hasClass("active")) {
+				$("button[data-group=name]").removeClass("active");
+				$btn.addClass("active");
+
+				var $listitems = $mylist.children('div[data-popularity]').get();
+
+				$listitems.sort(function(a, b) {
+					return $(b).attr("data-popularity").localeCompare($(a).attr("data-popularity"));
+				});
+
+				$.each($listitems, function(index, item) {
+					$mylist.append(item); 
+				});
+			} else if($btn.attr("data-group") === "name" && ! $btn.hasClass("active")) {
+				$btn.addClass("active");
+				$("button[data-group=popularity]").removeClass("active");
+
+				var $listitems = $mylist.children('div[data-name]').get();
+
+				$listitems.sort(function(a, b) {
+					return $(a).attr("data-name").localeCompare($(b).attr("data-name"));
+				});
+
+				$.each($listitems, function(index, item) {
+					$mylist.append(item);
+				});
+			}
+
+		});
 
 	</script>
 

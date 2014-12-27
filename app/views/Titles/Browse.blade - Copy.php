@@ -78,39 +78,31 @@
 	
 	<script type="text/javascript">
 
-	$(".btn-sort").click(function() {
-		var $mylist = $('#grid'),
-			$btn = $(this);
-			
-		if($btn.attr("data-group") === "popularity" && ! $btn.hasClass("active")) {
-			$("button[data-group=name]").removeClass("active");
-			$btn.addClass("active");
-			
-			var $listitems = $mylist.children('div[data-popularity]').get();
-			
-			$listitems.sort(function(a, b) {
-				return $(b).attr("data-popularity").localeCompare($(a).attr("data-popularity"));
-			});
-
-			$.each($listitems, function(index, item) {
-				$mylist.append(item); 
-			});
-		} else if($btn.attr("data-group") === "name" && ! $btn.hasClass("active")) {
-			$btn.addClass("active");
-			$("button[data-group=popularity]").removeClass("active");
-			
-			var $listitems = $mylist.children('div[data-name]').get();
-			
-			$listitems.sort(function(a, b) {
-				return $(a).attr("data-name").localeCompare($(b).attr("data-name"));
-			});
-
-			$.each($listitems, function(index, item) {
-				$mylist.append(item);
-			});
-		}
-		
+	var $grid = $('#grid'),
+		  $filterOptions = $('.filter-options');
+  
+	$grid.shuffle({
+		itemSelector: '.picture-item'
 	});
+
+	var $btns = $filterOptions.children();
+    $btns.on('click', function() {
+      var $this = $(this),
+          isActive = $this.hasClass( 'active' ),
+          group = isActive ? 'all' : $this.data('group');
+ 
+      // Hide current label, show current label in title
+      if ( !isActive ) {
+        $('.filter-options .active').removeClass('active');
+      }
+ 
+      $this.toggleClass('active');
+ 
+      // Filter elements
+      $grid.shuffle( 'shuffle', group );
+    });
+ 
+    $btns = null;
 
 	</script>
 @stop

@@ -108,6 +108,12 @@
 	                            @endif
 
 	                            </div>
+                            
+                            <div class="col-md-12">
+                                @if ($data->getTagline())
+                                    <h3>{{ $data->getTagline() }}</h3>
+                                @endif
+                            </div>
 
 
                             <div class="col-md-12">

@@ -5,10 +5,9 @@
 {{ Form::open(array('route' => array(Str::slug(trans('main.movies')) . '.reviews.store'), 'id' => 'review-form', 'data-path' => asset('assets/images'), 'data-url' => Request::url())) }}
   
   <p class="pull-left">{{ trans('main.your rating') }}:</p>
-
-  <br>
-
-  <div id="rating" class="pull-left"></div>
+  &nbsp; &nbsp;
+  
+  <div id="rating" class="pull-left" style="cursor: pointer; width: 200px;"></div>
   <div class="current pull-left"></div>
   
   @if(Helpers::loggedInUser())

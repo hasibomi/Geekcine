@@ -11,6 +11,9 @@
 |
 */
 
+// Crop image
+Route::post("crop/{id}", ["as" => "crop-image", "uses" => "UserController@crop"]);
+
 //search
 Route::get(Str::slug(trans('main.search')), 'SearchController@byQuery');
 Route::get('typeahead/{query}', array('uses' => 'SearchController@typeAhead', 'as'   => 'typeahead'));

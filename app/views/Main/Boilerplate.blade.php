@@ -45,6 +45,8 @@
   {{ HTML::style('assets/css/font.css') }}
 
   {{ HTML::style('assets/css/app.css') }}
+  
+  {{ HTML::style('assets/css/raty.css') }}
 
 
 
@@ -150,8 +152,6 @@
 
  {{ HTML::script('assets/js/slimscroll/jquery.slimscroll.min.js') }}
 
- {{ HTML::script('assets/js/app.plugin.js') }}
-
  {{ HTML::script('assets/js/jPlayer/jquery.jplayer.min.js') }}
 
  {{ HTML::script('assets/js/jPlayer/add-on/jplayer.playlist.min.js') }}
@@ -159,6 +159,8 @@
  {{ HTML::script('assets/js/jPlayer/demo.js') }}
  
  {{ HTML::script('assets/js/home-autocomplete.js') }}
+ 
+ {{ HTML::script('assets/js/raty.js') }}
 
 
 

@@ -33,19 +33,25 @@
 
                       @foreach ($reviews as $k => $r)
 
-						<li>			
-							<div class="row review-info">
-			                	<span class="review-score"><span>{{{ $r->score * 10 }}}</span></span>  <strong>{{ \Carbon\Carbon::createFromTimeStamp(strtotime($r->created_at))->diffForHumans() }}</strong> - <strong>{{ Title::find($r->title_id)->title }}</strong>
-				            </div>
+			<li style="width: 95%; margin: auto; list-style: none;">			
+			    <div class="row review-info">
+				@if(($r->score * 10) <= 60)
+				    <span class="review-score" style="border: 2px solid rgb(255, 46, 70); border-radius: 50px; padding: 5px;"><span>{{{ $r->score * 10 }}}</span></span>  <strong>{{ \Carbon\Carbon::createFromTimeStamp(strtotime($r->created_at))->diffForHumans() }}</strong> - <strong>{{ Title::find($r->title_id)->title }}</strong>
+				@else
+				    <span class="review-score" style="border: 2px solid rgb(39, 174, 96); border-radius: 50px; padding: 5px;"><span>{{{ $r->score * 10 }}}</span></span>  <strong>{{ \Carbon\Carbon::createFromTimeStamp(strtotime($r->created_at))->diffForHumans() }}</strong> - <strong>{{ Title::find($r->title_id)->title }}</strong>
+				@endif
+			    </div>
+			    
+			    <br>
 
-				            <p class="review-body">{{{ $r->body }}}</p>
+			    <p class="review-body">{{{ $r->body }}}</p>
 
-				            <hr> 
-						</li>
+			    <hr> 
+			</li>
 
-					@endforeach
+		    @endforeach
 
-                      @if (Request::segment(3) == 'favorites')
+                    @if (Request::segment(3) == 'favorites')
                         {{ $favorite->appends(array())->links() }}
                     @else
                         {{ $watchlist->appends(array())->links() }}

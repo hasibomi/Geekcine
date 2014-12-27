@@ -2,6 +2,7 @@
 
 @section('title')
 	<title> {{  trans('users.profile details') . ' - ' . trans('main.brand') }}</title>
+	<link rel="stylesheet" href="{{ asset("assets/css/jquery.Jcrop.min.css") }}">
 @stop
 
 @section('bodytag')
@@ -45,21 +46,42 @@
       {{ Form::close() }}
       
       <br>
-
-      <img width="50%" src="{{{ $user->background ? asset($user->background) : asset('assets/images/ronin.jpg') }}}" alt="{{{ $user->username . trans('users.avatar') }}}" class="img-responsive thumb">
+	  
+	  <p>Previous background : </p>
+	  
+	  <img src="{{{ $user->background ? asset($user->background) : asset('assets/images/ronin.jpg') }}}" alt="{{{ $user->username . trans('users.avatar') }}}" id="image">
+	  
+	  @if($user->background)
+		{{ Form::open(["url" => "crop/" . $user->id]) }}
+		  {{ Form::hidden("image", $user->background) }}
+		  {{ Form::hidden("x") }}
+		  {{ Form::hidden("y") }}
+		  {{ Form::hidden("w") }}
+		  {{ Form::hidden("h") }}
+		  <br />
+		  {{ Form::submit("Crop") }}
+		{{ Form::close() }}
+	  
+	  
+	  <p>Current background : </p>
+	  <img src="{{{ asset($user->new_background) }}}" alt="{{{ $user->username . trans('users.avatar') }}}">
+	  
+	  @endif
       
       <br>
       <br>
 
        {{ Form::open(array('route' => array('users.bg', $user->id), 'files' => true)) }}
-
+	   
         <div class="form-group">
           {{ Form::file('bg') }}
           {{ $errors->first('bg', '<span class="help-block alert alert-danger">:message</span>') }}
           <span class="help-block">*{{ trans('main.user bg expl') }}</span>
         </div>
-
-        <button type="submit" class="btn btn-success">{{ trans('users.upload') }}</button>
+	   
+		<div class="form-group">
+			<button type="submit" class="btn btn-success">{{ trans('users.upload') }}</button>
+		</div>
 
       {{ Form::close() }}
 
@@ -170,7 +192,22 @@
   <div class="push"></div>
 
 </section></section></section></section>
-  @stop
 
-@section('ads')
+	@section("scripts")
+		{{ HTML::script("assets/js/jquery.Jcrop.min.js") }}
+		
+		<script type="text/javascript">
+			$("#image").Jcrop({
+				onSelect: function(crop) {
+					$("input[name=x]").val(crop.x);
+					$("input[name=y]").val(crop.y);
+					$("input[name=w]").val(crop.w);
+					$("input[name=h]").val(crop.h);
+					
+					console.log(crop);
+				}
+			});
+		</script>
+	@stop
+
 @stop

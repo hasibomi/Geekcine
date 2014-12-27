@@ -1,12 +1,14 @@
 <div class="container">
 
 	<div class="row">
-		<div class="col-md-2 btn-group" id="grid-sorters">
-			<button type="button" class="btn btn-sort active" data-group="popularity">{{ trans('main.popularity') }}</button>
-	  		<button type="button" class="btn btn-sort" data-group="name">{{ trans('main.title a-z') }}</button>
+		<div class="col-xs-3 hidden-xs hidden-sm">
+			<div class="btn-group filter-options" id="grid-sorters">
+				<button type="button" class="btn btn-sort" data-group="popularity">{{ trans('main.popularity') }}</button>
+				<button type="button" class="btn btn-sort" data-group="name">{{ trans('main.title a-z') }}</button>
+			</div>
 		</div>
 
-		<div class="col-md-10">
+		<div class="col-md-7">
 			
 			{{ Form::open(array('url' => $action, 'class' => 'form-inline', 'method' => 'GET')) }}
 

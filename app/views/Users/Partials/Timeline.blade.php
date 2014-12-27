@@ -3,7 +3,7 @@
     <section class="scrollable">
 
       <section class="panel panel-default">
-        <div class="panel-body" style="background: url({{ $user->background ? asset($user->background) : asset('assets/images/ronin.jpg') }}) no-repeat; background-size: cover" id="img-bg">
+        <div class="panel-body" style="background: url({{ $user->background ? asset($user->new_background) : asset('assets/images/ronin.jpg') }}) no-repeat; background-size: cover" id="img-bg">
           <div class="clearfix text-center m-t" style="margin-bottom: 10%;">
             <div class="inline" style="">
               <div class="easypiechart" data-percent="75" data-line-width="5" data-bar-color="#4cc0c1" data-track-Color="#f5f5f5" data-scale-Color="false" data-size="134" data-line-cap='butt' data-animate="1000">

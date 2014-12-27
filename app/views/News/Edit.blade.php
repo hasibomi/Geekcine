@@ -4,12 +4,6 @@
 	<title>{{ trans('dash.edit') }} {{ trans('main.news') }} - {{ trans('main.brand') }}</title>
 @stop
 
-@section('assets')
-	@parent
-
-	{{ HTML::script('assets/js/ckeditor/ckeditor.js') }}
-@stop
-
 @section('bodytag')
 	<body id="edit">
 @stop
@@ -60,7 +54,33 @@
             </section>
         </section>
     </section>
-</section>	
+</section>
+
+@section('scripts')
+
+	{{ HTML::script('assets/js/ckeditor/ckeditor.js') }}
+
+	<script>
+
+		//resize ckeditor by specified rows
+		(function($) {
+			jQuery.fn.cke_resize = function() {
+			   return this.each(function() {
+			      var $this = $(this);
+			      var rows = $this.attr('rows');
+			      var height = rows * 20;
+			      $this.next("div.cke").find(".cke_contents").css("height", height);
+			   });
+			};
+			})(jQuery);
+
+			CKEDITOR.on( 'instanceReady', function(){
+			  $("textarea.ckeditor").cke_resize();
+		})
+
+	</script>
+
+@stop
 
 @stop
 

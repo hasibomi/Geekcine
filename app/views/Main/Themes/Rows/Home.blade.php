@@ -406,41 +406,15 @@
 
                                         @if ($options->scrapeNewsFully())
 
-                                            <h4 class="media-heading"><a href="{{{ Helpers::url($n->title, $n->id, 'news') }}}">{{{ $n['title'] }}}</a> </h4>
+                                            <h4 class="media-heading"><a href="{{{ Helpers::url($n->title, $n->id, 'news') }}}">{{{ substr($n['title'], 0, 40) . '...' }}}</a> </h4>
 
                                        @else
 
-                                           <h4 class="media-heading"><a href="{{{ $n['full_url'] ? $n['full_url'] : Helpers::url($n->title, $n->id, 'news') }}}">{{{ $n['title'] }}}</a> </h4>
+                                           <h4 class="media-heading"><a href="{{{ $n['full_url'] ? $n['full_url'] : Helpers::url($n->title, $n->id, 'news') }}}">{{{ substr($n['title'], 0, 40) . '...' }}}</a> </h4>
 
                                        @endif
 
                                     </div>
-
-
-
-                                    <span class="home-news-time pull-left"> {{ trans('main.from') }} {{{ $n['source'] ? $n['source'] : trans('main.brand') }}}
-
-                                        <span class="home-news-ago"><i class="fa fa-clock-o"></i> 
-
-                                            {{ \Carbon\Carbon::createFromTimeStamp(strtotime($n['created_at']))->diffForHumans() }}
-
-                                        </span>
-
-
-
-                                        @if ($options->scrapeNewsFully())
-
-                                             <a href="{{{ Helpers::url($n->title, $n->id, 'news') }}}">{{ trans('main.read full article') }} <i class="fa fa-external-link"></i></a>
-
-                                        @else
-
-                                            <a href="{{{ $n['full_url'] ? $n['full_url'] : Helpers::url($n->title, $n->id, 'news') }}}">{{ trans('main.read full article') }} <i class="fa fa-external-link"></i></a>
-
-                                        @endif
-
-
-
-                                    </span>
 
                                 </div>
 
@@ -510,15 +484,129 @@
 
 	          <section class="w-f-md scrollable hover">
 
-	            @if($ad = $options->getFooterAd())
-
-
-
-                    <div class="row ads-row">{{ $ad }}</div>
-
-
-
-                @endif
+	            <h4 class="font-thin m-l-md m-t">Connected</h4>
+                  <ul class="list-group no-bg no-borders auto m-t-n-xxs">
+                    <li class="list-group-item">
+                      <span class="pull-left thumb-xs m-t-xs avatar m-l-xs m-r-sm">
+                        <img src="{{ asset('assets/images/a1.png') }}" alt="..." class="img-circle">
+                        <i class="on b-light right sm"></i>
+                      </span>
+                      <div class="clear">
+                        <div><a href="#">Chris Fox</a></div>
+                        <small class="text-muted">New York</small>
+                      </div>
+                    </li>
+                    <li class="list-group-item">
+                      <span class="pull-left thumb-xs m-t-xs avatar m-l-xs m-r-sm">
+                        <img src="{{ asset('assets/images/a2.png') }}" alt="...">
+                        <i class="on b-light right sm"></i>
+                      </span>
+                      <div class="clear">
+                        <div><a href="#">Amanda Conlan</a></div>
+                        <small class="text-muted">France</small>
+                      </div>
+                    </li>
+                    <li class="list-group-item">
+                      <span class="pull-left thumb-xs m-t-xs avatar m-l-xs m-r-sm">
+                        <img src="{{ asset('assets/images/a3.png') }}" alt="...">
+                        <i class="busy b-light right sm"></i>
+                      </span>
+                      <div class="clear">
+                        <div><a href="#">Dan Doorack</a></div>
+                        <small class="text-muted">Hamburg</small>
+                      </div>
+                    </li>
+                    <li class="list-group-item">
+                      <span class="pull-left thumb-xs m-t-xs avatar m-l-xs m-r-sm">
+                        <img src="{{ asset('assets/images/a4.png') }}" alt="...">
+                        <i class="away b-light right sm"></i>
+                      </span>
+                      <div class="clear">
+                        <div><a href="#">Lauren Taylor</a></div>
+                        <small class="text-muted">London</small>
+                      </div>
+                    </li>
+                    <li class="list-group-item">
+                      <span class="pull-left thumb-xs m-t-xs avatar m-l-xs m-r-sm">
+                        <img src="{{ asset('assets/images/a5.png') }}" alt="..." class="img-circle">
+                        <i class="on b-light right sm"></i>
+                      </span>
+                      <div class="clear">
+                        <div><a href="#">Chris Fox</a></div>
+                        <small class="text-muted">Milan</small>
+                      </div>
+                    </li>
+                    <li class="list-group-item">
+                      <span class="pull-left thumb-xs m-t-xs avatar m-l-xs m-r-sm">
+                        <img src="{{ asset('assets/images/a6.png') }}" alt="...">
+                        <i class="on b-light right sm"></i>
+                      </span>
+                      <div class="clear">
+                        <div><a href="#">Amanda Conlan</a></div>
+                        <small class="text-muted">Copenhagen</small>
+                      </div>
+                    </li>
+                    <li class="list-group-item">
+                      <span class="pull-left thumb-xs m-t-xs avatar m-l-xs m-r-sm">
+                        <img src="{{ asset('assets/images/a7.png') }}" alt="...">
+                        <i class="busy b-light right sm"></i>
+                      </span>
+                      <div class="clear">
+                        <div><a href="#">Dan Doorack</a></div>
+                        <small class="text-muted">Barcelona</small>
+                      </div>
+                    </li>
+                    <li class="list-group-item">
+                      <span class="pull-left thumb-xs m-t-xs avatar m-l-xs m-r-sm">
+                        <img src="{{ asset('assets/images/a8.png') }}" alt="...">
+                        <i class="away b-light right sm"></i>
+                      </span>
+                      <div class="clear">
+                        <div><a href="#">Lauren Taylor</a></div>
+                        <small class="text-muted">Tokyo</small>
+                      </div>
+                    </li>
+                    <li class="list-group-item">
+                      <span class="pull-left thumb-xs m-t-xs avatar m-l-xs m-r-sm">
+                        <img src="{{ asset('assets/images/a9.png') }}" alt="..." class="img-circle">
+                        <i class="on b-light right sm"></i>
+                      </span>
+                      <div class="clear">
+                        <div><a href="#">Chris Fox</a></div>
+                        <small class="text-muted">UK</small>
+                      </div>
+                    </li>
+                    <li class="list-group-item">
+                      <span class="pull-left thumb-xs m-t-xs avatar m-l-xs m-r-sm">
+                        <img src="{{ asset('assets/images/a1.png') }}" alt="...">
+                        <i class="on b-light right sm"></i>
+                      </span>
+                      <div class="clear">
+                        <div><a href="#">Amanda Conlan</a></div>
+                        <small class="text-muted">Africa</small>
+                      </div>
+                    </li>
+                    <li class="list-group-item">
+                      <span class="pull-left thumb-xs m-t-xs avatar m-l-xs m-r-sm">
+                        <img src="{{ asset('assets/images/a2.png') }}" alt="...">
+                        <i class="busy b-light right sm"></i>
+                      </span>
+                      <div class="clear">
+                        <div><a href="#">Dan Doorack</a></div>
+                        <small class="text-muted">Paris</small>
+                      </div>
+                    </li>
+                    <li class="list-group-item">
+                      <span class="pull-left thumb-xs m-t-xs avatar m-l-xs m-r-sm">
+                        <img src="{{ asset('assets/images/a3.png') }}" alt="...">
+                        <i class="away b-light right sm"></i>
+                      </span>
+                      <div class="clear">
+                        <div><a href="#">Lauren Taylor</a></div>
+                        <small class="text-muted">Brussels</small>
+                      </div>
+                    </li>
+                  </ul>
 
 	          </section>
 

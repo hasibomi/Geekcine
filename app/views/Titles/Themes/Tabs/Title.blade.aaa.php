@@ -55,18 +55,18 @@
                         <span class="h2 font-thin">{{ $data->getTitle() }}</span>
                         <br>
                         @if ($data->getRuntime())
-                            <span>{{ $data->getRuntime() . ' ' . trans('main.min')}}</span> -
-                            @endif
+			                <span>{{ $data->getRuntime() . ' ' . trans('main.min')}}</span> -
+			          	@endif
 
-                            @if ($data->getGenre())
-                                <span>{{ $data->getGenre() }}</span> -
-                            @endif
+			          	@if ($data->getGenre())
+				            <span>{{ $data->getGenre() }}</span> -
+			          	@endif
 
-                            @if ($data->getReleasedate())
-                                <span>{{ $data->getReleasedate() }}</span>
-                            @endif
+			           	@if ($data->getReleasedate())
+				            <span>{{ $data->getReleasedate() }}</span>
+			          	@endif
 
-                            <span class="pull-right">
+			          	<span class="pull-right">
                             {{ HTML::image('assets/images/cinema.png', 'TV', ['class'=>'img-responsive']) }}
                         </span>
                       </div>
@@ -75,7 +75,7 @@
                     
                     <div class="row">
                        <div class="col-md-12">
-			    <div style="width:95%; margin: auto;">
+							<div style="width:95%; margin: auto;">
 	                       		@include('Titles.Themes.Tabs.TitleListButtons')
 
 	                       		<br>
@@ -186,9 +186,124 @@
 	                                
 	                                <div class="title-ratings">
 	                                    @if ($imdb = $data->getImdbRating())
-						<dt>IMDb {{ trans('main.rating') }}:</dt>           
-						<dd id="imdb-rate"><strong class="pull-right">({{ $imdb }}/10)</strong></dd>
-					    @endif         
+	                                        <dt>IMDb {{ trans('main.rating') }}:</dt>           
+	                                        <dd id="imdb-rate">
+	                                        	<strong class="pull-right">
+		                                        	@if ($imdb == 1)
+		                                        		<i class="fa fa-star"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                    		@elseif ($imdb == 2)
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+													@elseif ($imdb == 3)
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+													@elseif ($imdb == 4)
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+													@elseif ($imdb == 5)
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+													@elseif ($imdb == 6)
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+													@elseif ($imdb == 7)
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+													@elseif ($imdb == 8)
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+													@elseif ($imdb == 9)
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+		                                        		<i class="fa fa-star-o"></i>
+													@elseif ($imdb == 10)
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+		                                    		@endif
+	                                    			({{ $imdb }}/10)
+	                                    		</strong>
+	                                        </dd>
+	                                    @endif          
 	                                </div>
 
 	                                <div class="title-ratings">
@@ -208,9 +323,124 @@
 
 	                                <div class="title-ratings">
 	                                    @if ($tmdb = $data->getTmdbRating() && Carbon\Carbon::parse($data->getReleaseDate()) < Carbon\Carbon::now()->toDateString())
-						<dt>TMDB {{ trans('main.rating') }}:</dt>           
-						<dd id="tmdb-rate"><strong class="pull-right">({{ $tmdb }}/10)</strong></dd>
-					    @endif
+	                                        <dt>TMDB {{ trans('main.rating') }}:</dt>           
+	                                        <dd id="tmdb-rate">
+	                                        	<strong class="pull-right">
+		                                        	@if ($tmdb == 1)
+		                                        		<i class="fa fa-star"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                    		@elseif ($tmdb == 2)
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+													@elseif ($tmdb == 3)
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+													@elseif ($tmdb == 4)
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+													@elseif ($tmdb == 5)
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+													@elseif ($tmdb == 6)
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+													@elseif ($tmdb == 7)
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+													@elseif ($tmdb == 8)
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star-o"></i>
+		                                        		<i class="fa fa-star-o"></i>
+													@elseif ($tmdb == 9)
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+		                                        		<i class="fa fa-star-o"></i>
+													@elseif ($tmdb == 10)
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+		                                    		@endif
+		                                    		({{ $tmdb }}/10)
+	                                    		</strong>
+	                                        </dd>
+	                                    @endif
 	                                </div>
 
 	                                @if ($data->getBudget() || $data->getRevenue())
@@ -377,12 +607,12 @@
                     </div> {{-- /.m-t-n-xxs --}}
 
                     <div class="modal fade animated fadeInBig" id="img-modal">
-			<div class="modal-dialog">
-			    <div class="modal-content">
-				<div class="modal-body"></div>
-			    </div>
-			</div>
-		    </div>
+				  		<div class="modal-dialog">
+					  		<div class="modal-content">
+					  			<div class="modal-body"></div>
+				  			</div>
+			  			</div>
+					</div>
                 </section> {{-- /section.scrollable.hover --}}
             </section> {{-- /section.vbox --}}
         </section> {{-- /section.col-sm-3.no-padder.lt --}}
@@ -567,12 +797,6 @@
     halfShow : true,
     number: 10,
     width: 260,
-  });
-  
-  $('#rating').raty({
-	path: '../assets/images',
-	number: 10,
-	width: 260,
   });
 
 })(jQuery);

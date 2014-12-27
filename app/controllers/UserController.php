@@ -452,6 +452,36 @@ class UserController extends \BaseController {
 
         return Redirect::to('/')->withFailure( trans('users.pass reset failure') );
     }
+	
+	// Crop image
+	public function crop($id)
+	{		
+		$targ_w = 573;
+		$targ_h = 400;
+		$jpeg_quality = 90;
+
+		$src = Input::get("image");
+		$img_r = imagecreatefromjpeg($src);
+		$dst_r = ImageCreateTrueColor( $targ_w, $targ_h );
+
+		imagecopyresampled($dst_r,$img_r,0,0,Input::get('x'),Input::get('y'),
+		$targ_w,$targ_h,Input::get('w'),Input::get('h'));
+
+		//header('Content-type: image/jpeg');
+		//imagejpeg($dst_r,"avatars/bgs/" . basename($src),$jpeg_quality);
+		
+		imagejpeg($dst_r,"avatars/bgs/" . time() . basename($src),$jpeg_quality);
+		
+		$user = User::find($id);
+		
+		$user->new_background = "avatars/bgs/" . time() . basename($src);
+		
+		$user->save();
+		
+		return Redirect::back();
+
+		exit;
+	}
 
 
 }
